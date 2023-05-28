@@ -15,6 +15,41 @@ import '../../styles/my_students/style.css'
 
 
 export default function Navbar() {
+    const images = [
+
+        {
+            name: 'Dashboard',
+            path: dashboard
+        },
+        {
+            name: 'Messages',
+            path: messages
+        },
+        {
+            name: 'Sessions',
+            path: sessions
+        },
+        {
+            name: 'My Availability',
+            path: available
+        },
+        {
+            name: 'My Students',
+            path: mystudents
+        },
+        {
+            name: 'Assign Homework',
+            path: homework
+        },
+        {
+            name: 'Wallet',
+            path: wallet
+        },
+        {
+            name: 'Payout request',
+            path: payout
+        }
+    ]
     return (
         <div className="Navbar">
             <div className="label">
@@ -22,70 +57,19 @@ export default function Navbar() {
             </div>
             <div className="table">
                 <table>
-                    <tr>
-                        <td class="img">
-                            <img src={dashboard}/>
-                        </td>
-                        <td class="text">
-                            <p>Dashboard</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="img">
-                            <img src={messages} />
-                        </td>
-                        <td class="text">
-                            <p>Messages</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="img">
-                            <img src={sessions} />
-                        </td>
-                        <td class="text">
-                            <p>Sessions</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="img">
-                            <img src={available} />
-                        </td>
-                        <td class="text">
-                            <p>My Availability</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="img">
-                            <img src={mystudents} />
-                        </td>
-                        <td class="text">
-                            <p>My Students</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="img">
-                            <img src={homework} />
-                        </td>
-                        <td class="text">
-                            <p>Assign Homework</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="img">
-                            <img src={wallet} />
-                        </td>
-                        <td class="text">
-                            <p>Wallet</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="img">
-                            <img src={payout} />
-                        </td>
-                        <td class="text">
-                            <p>Payout request</p>
-                        </td>
-                    </tr>
+                    {
+                        images.map(image => (
+                            <tr>
+                                <td class="img">
+                                    <img src={image.path} />
+                                </td>
+                                <td class="text">
+                                    <p>{image.name}</p>
+                                </td>
+                            </tr>
+                        )
+                        )
+                    }
                 </table>
             </div>
         </div>
