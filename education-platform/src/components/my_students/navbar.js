@@ -1,4 +1,5 @@
 import React from "react";
+
 import label from '../../images/my_students/label.png';
 import dashboard from '../../images/my_students/dashboard.png';
 import messages from '../../images/my_students/messages.png';
@@ -8,6 +9,10 @@ import mystudents from '../../images/my_students/mystudents.png';
 import homework from '../../images/my_students/homework.png';
 import wallet from '../../images/my_students/wallet.png';
 import payout from '../../images/my_students/payout.png';
+import '../../styles/my_students/style.css'
+
+
+
 
 export default function Navbar() {
     return (
@@ -19,7 +24,7 @@ export default function Navbar() {
                 <table>
                     <tr>
                         <td class="img">
-                            <img src={dashboard} />
+                            <img src={dashboard}/>
                         </td>
                         <td class="text">
                             <p>Dashboard</p>

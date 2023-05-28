@@ -1,0 +1,24 @@
+.Navbar {
+    height: 100%;
+    width: 16.33%;
+    float: left;
+    padding: 15px;
+    border-right: 1px solid hsl(0, 7%, 91%);
+}
+.label{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 180px;
+
+}
+
+td.text p{
+    text-align: left;
+    color:#8C8888;
+    font-size: 15px;
+    margin-left: 10px;
+    
+}
+tr {
+    height: 60px;
+}
