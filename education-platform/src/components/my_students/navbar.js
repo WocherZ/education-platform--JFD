@@ -57,7 +57,7 @@ export default function Navbar() {
         }
     ]
     return (
-        <div className="Navbar">
+        <div className="navbar">
             <div className="label">
                 <img src={label} />
             </div>
