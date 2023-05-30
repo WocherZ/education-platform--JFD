@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 import label from '../../images/my_students/label.png';
 import dashboard from '../../images/my_students/dashboard.png';
@@ -14,7 +14,13 @@ import '../../styles/my_students/style.css'
 
 
 
+
+
 export default function Navbar() {
+    
+    const handleClick = (e) => {
+        e.target.style.color = "rgb(0, 171, 189)"
+    };
     const images = [
 
         {
@@ -59,12 +65,12 @@ export default function Navbar() {
                 <table>
                     {
                         images.map(image => (
-                            <tr>
-                                <td class="img">
+                            <tr onClick={handleClick} >
+                                <td className="img">
                                     <img src={image.path} />
                                 </td>
-                                <td class="text">
-                                    <p>{image.name}</p>
+                                <td >
+                                    <p><a href="">{image.name}</a></p>
                                 </td>
                             </tr>
                         )
