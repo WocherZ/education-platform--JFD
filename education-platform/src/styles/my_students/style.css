@@ -33,12 +33,17 @@ a {
 .header {
     width: 80.33%;
     display: grid;
-    grid-template-columns: 1fr 4fr auto auto auto auto;
+    grid-template-columns: auto 4fr auto auto auto;
     align-items: center;
+    padding-top: 60px;
+}
+
+.header > div {
+    padding-left: 40px;
 }
 
 input {
-    position: absolute;
+
     width: 175px;
     height: 48px;
     left: 450px;
@@ -50,4 +55,10 @@ input {
     border: 1px solid hsl(0, 7%, 91%);
     text-align: center;
     
+}
+
+
+.wrapper {
+    display: inline;
+
 }
