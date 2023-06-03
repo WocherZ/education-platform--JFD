@@ -10,16 +10,34 @@ import homework from '../../images/my_students/homework.png';
 import wallet from '../../images/my_students/wallet.png';
 import payout from '../../images/my_students/payout.png';
 import '../../styles/my_students/style.css'
+import Modal from '../../modal/my_students/Modal.js'
 
 
 
 
 
 
-export default function Navbar() {
-    
+export default function Navbar({ setactive }) {
+
+
     const handleClick = (e) => {
-        e.target.style.color = "rgb(0, 171, 189)"
+        if (e.target.style.color === "rgb(0, 171, 189)") {
+            e.target.style.color = "";
+            setactive(false)
+        }
+
+        else {
+            const elements = document.getElementsByTagName("p")
+            for (let index = 0; index < elements.length; index++) {
+                let color = getComputedStyle(elements[index]).color
+                if (color === "rgb(0, 171, 189)") {
+                    elements[index].style.color = ""
+                    break
+                }
+            }
+            e.target.style.color = "rgb(0, 171, 189)"
+            setactive(true)
+        }
     };
     const images = [
 
@@ -56,6 +74,7 @@ export default function Navbar() {
             path: payout
         }
     ]
+
     return (
         <div className="navbar">
             <div className="label">
@@ -70,7 +89,7 @@ export default function Navbar() {
                                     <img src={image.path} />
                                 </td>
                                 <td >
-                                    <p><a href="">{image.name}</a></p>
+                                    <p className={image.name}>{image.name}</p>
                                 </td>
                             </tr>
                         )
@@ -78,6 +97,7 @@ export default function Navbar() {
                     }
                 </table>
             </div>
+
         </div>
     )
 }

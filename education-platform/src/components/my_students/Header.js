@@ -8,27 +8,25 @@ import '../../styles/my_students/style.css'
 
 
 
-
-
-
 export default function Header() {
 
     return (
         <div className="header">
-                <div class="search_input">
-                    <input type="text" src={loupe} placeholder="Search verited" />
-                </div>
-                <div className="empty">
-                </div>
-                <div className="notice">
-                <img src={bell} />
-                </div>
-                <div className="settings">
-                <img src={settings} />
-                </div>
-                <div className="account">
-                <img src={account} />
-                </div>
+            <div class="search_input">
+                <input type="text" src={loupe} placeholder="Search verited" />
+            </div>
+            <div className="empty">
+            </div>
+            <div className="notice">
+                <a href=""><img src={bell} /></a>
+
+            </div>
+            <div className="settings">
+                <a href=""><img src={settings} /></a>
+            </div>
+            <div className="account">
+                <a href=""><img src={account} /></a>
         </div>
+        </div >
     )
 }
