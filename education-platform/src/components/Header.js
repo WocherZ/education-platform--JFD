@@ -1,10 +1,14 @@
-import React from "react";
+import React from 'react';
+import logo_header from './AboutUs/images/logo_header.svg';
 
-
-export default function Header() {
+function Header() {
     return (
-        <div id="header">
-            <p>This is a header</p>
-        </div>
-    )
+        <header className="header">
+            <a href = "#">
+                <img src = {logo_header} alt = "лого" className = "header__logo"/>
+            </a>
+        </header>
+    );
 }
+
+export default Header;

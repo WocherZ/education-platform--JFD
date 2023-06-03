@@ -1,0 +1,24 @@
+.aboutus {
+    margin-top: 260px;
+}
+
+.aboutus__mission {
+    margin: 0 auto 0;
+    max-width: 1720px;
+    min-height: 405px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 80px 140px 40px 140px;
+}
+
+.aboutus__mission_img {
+    min-height: 280px;
+    max-width: 410px;  
+}
+
+.aboutus__mission_text {
+    padding-left: 100px;
+    min-height: 175px;
+    max-width: 870px; 
+}
