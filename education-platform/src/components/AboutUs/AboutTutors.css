@@ -1,0 +1,41 @@
+.abouttutors {
+    margin: 0 auto;
+    max-width: 1720px;;
+}
+
+.abouttutors__header {
+    margin: 0 auto;
+    font-size: 33px;
+    line-height: 55px;
+    font-weight: 700;
+    padding-top: 40px;
+}
+
+.abouttutors__wrapper {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.abouttutors__img {
+    max-width: 415px;
+}
+
+.abouttutors__quotes {
+    max-width: 412px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+.abouttutors__quotes_header {
+    margin: 0 auto;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 22px;
+}
