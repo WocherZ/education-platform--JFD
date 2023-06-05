@@ -80,7 +80,7 @@ export default function Navbar({ setactive }) {
             <div className="label">
                 <img src={label} />
             </div>
-            <div className="table">
+            <div className="table-navbar">
                 <table>
                     {
                         images.map(image => (
