@@ -96,3 +96,23 @@ th{
     border-right: 1px solid #8C8888;
 }
 
+.dashboard{
+    display: flex;
+    margin: 0 auto 0 auto;
+
+}
+
+.lessons{
+    background-color: pink;
+    height: 200px;
+    width: 200px;
+    margin-left: 30px;
+    
+}
+
+.students{
+    background-color: rgb(192, 224, 255);
+    height: 200px;
+    width: 200px;
+    margin-left: 30px;
+}

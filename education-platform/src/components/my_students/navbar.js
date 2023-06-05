@@ -10,20 +10,20 @@ import homework from '../../images/my_students/homework.png';
 import wallet from '../../images/my_students/wallet.png';
 import payout from '../../images/my_students/payout.png';
 import '../../styles/my_students/style.css'
-import Modal from '../../modal/my_students/Modal.js'
+import Modal from '../../modal/my_students/Modalroot.js'
 
 
 
 
 
 
-export default function Navbar({ setactive }) {
+export default function Navbar(props) {
 
 
     const handleClick = (e) => {
         if (e.target.style.color === "rgb(0, 171, 189)") {
             e.target.style.color = "";
-            setactive(false)
+            props.setactive(false)
         }
 
         else {
@@ -36,7 +36,8 @@ export default function Navbar({ setactive }) {
                 }
             }
             e.target.style.color = "rgb(0, 171, 189)"
-            setactive(true)
+            props.setactive(true)
+            props.setsection(e.target.textContent)
         }
     };
     const images = [
