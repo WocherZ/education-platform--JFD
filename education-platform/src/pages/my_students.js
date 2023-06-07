@@ -9,20 +9,20 @@ import {Mystudentsmodal, Dashboard} from "../modal/my_students/Content.js";
 
 export default function MyStudent() {
     const[section, setSection] = useState()
-    const[modalActive, setModalActive] = useState(true)
+    const[modalActive, setModalActive] = useState(false)
     let component = <Dashboard />
 
-    component = <Dashboard />
+    
+
+    component = undefined;
     if (section === 'My Students')
             {
                 component = <Mystudentsmodal /> ;
             }
-    // else if (section === 'Dashboard')
-    // {
-    //     component = <Dashboard /> ;
-    // }
-
-
+    else if (section === 'Dashboard')
+    {
+        component = <Dashboard /> ;
+    }
 
     return (
         <div className="wrapper">

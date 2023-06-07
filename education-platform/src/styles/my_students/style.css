@@ -1,3 +1,7 @@
+.App {
+    min-width: 1020px;
+}
+
 .navbar {
     height: 100%;
     width: 16.33%;
@@ -37,7 +41,7 @@ a {
     padding-top: 60px;
 }
 
-.header > div {
+.header>div {
     padding-left: 40px;
 }
 
@@ -59,58 +63,63 @@ input {
 
 }
 
-.modal{
+.modal {
+    position: relative;
     margin: auto;
-    margin-top: 50px;   
-    height: 500px;
+    margin-top: 50px;
+    height: 400px;
+    min-height: 300px;
+    min-width: 600px;
     width: 800px;
     background-color: rgba(0, 0, 0, 0.04);
     display: flex;
     flex-flow: column;
-align-items: center;
+    align-items: center;
 
     transform: scale(0);
     box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.15);
     border-radius: 12px;
 }
 
-.modal.active{
+.modal.active {
     transform: scale(1);
-    
+
 }
 
-.table-my-students{
-    width: 500px; /* Ширина таблицы */
-    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+.table-my-students {
+    width: 500px;
+    /* Ширина таблицы */
+    border-collapse: collapse;
+    /* Убираем двойные линии между ячейками */
 }
 
-h3{
+h3 {
     font-family: 'Poppins';
     font-style: normal;
 }
 
-th{
+th {
     font-size: 15px;
     margin-left: 10px;
     color: #8C8888;
     border-right: 1px solid #8C8888;
 }
 
-.dashboard{
+.dashboard {
     display: flex;
     margin: 0 auto 0 auto;
 
 }
 
-.lessons{
+.lessons {
     background-color: pink;
     height: 200px;
     width: 200px;
     margin-left: 30px;
-    
+
 }
 
-.students{
+.students {
     background-color: rgb(192, 224, 255);
     height: 200px;
     width: 200px;
