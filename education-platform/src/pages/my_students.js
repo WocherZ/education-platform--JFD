@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import Navbar from "../components/my_students/navbar.js";
 import Header from "../components/my_students/Header";
 import '../styles/my_students/style.css'
@@ -12,7 +12,13 @@ export default function MyStudent() {
     const[modalActive, setModalActive] = useState(false)
     let component = <Dashboard />
 
-    
+    const modalSetHandler = (modal) => {
+        setModalActive(modal)
+    }
+
+    const sectionHandler = (section) => {
+            setSection(section)
+    }
 
     component = undefined;
     if (section === 'My Students')
@@ -26,7 +32,7 @@ export default function MyStudent() {
 
     return (
         <div className="wrapper">
-            <Navbar setactive = {setModalActive} setsection = {setSection}/>
+            <Navbar setactive = {modalSetHandler} setsection = {sectionHandler}/>
             <Header/>
              <Modal active={modalActive} child = {component}>
             </Modal>

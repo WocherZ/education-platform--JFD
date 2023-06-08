@@ -1,5 +1,6 @@
-import './App.css';
+
 import MyStudent from './pages/my_students';
+import WebDeveloper from './pages/courses/WebDeveloper.js';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -7,11 +8,13 @@ import HomeContent from './components/HomeContent';
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      <WebDeveloper/>
       {/* <Header />
       <HomeContent />
       <Footer /> */}
-      <MyStudent/>
+      {/* <MyStudent/> */}
+      
     </div>
   );
 }
