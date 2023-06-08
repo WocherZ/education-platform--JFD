@@ -1,17 +1,67 @@
-#header{
+#header {
     display: grid;
-    grid-template-columns: auto  auto 2fr auto auto auto;
+    grid-template-columns: auto 1fr 1fr auto auto auto;
     align-items: center;
+    text-align: center;
+
     div {
         padding: 10px;
     }
 }
+
 h1 {
     font-family: 'Poppins';
-font-style: normal;
-font-weight: 700;
-font-size: 60px;
-line-height: 90px;
-color: #504E4E;
-text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 90px;
+    color: #504E4E;
+    text-align: center;
 }
+
+#description {
+    text-align: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 51px;
+
+    color: #96989B;
+}
+
+#teacher {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+    color: #96989B;
+    div{
+        padding: 10px;
+    }
+    b{
+        color: #504E4E;
+    }
+}
+
+#modules-menu{
+    display: flex;
+    flex-direction: column;
+    color: #504E4E;
+    a{
+        color: #96989B;
+        display: none;
+    }
+
+}
+
+#modules-menu:active{
+    a{
+        display: block;
+    }
+}
+
+/* identical to box height */

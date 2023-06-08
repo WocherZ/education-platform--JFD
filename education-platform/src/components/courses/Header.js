@@ -13,7 +13,7 @@ export default function Header() {
                 <div class="label">
                     <p>EDUCATION PLATFORM</p>
                 </div>
-                <div class="search_input">
+                <div id="search-input">
                     <input type="text" src={loupe} placeholder="Search verited" />
                 </div>
                 <div className="empty">
