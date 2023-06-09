@@ -26,7 +26,6 @@ h1 {
     font-weight: 500;
     font-size: 26px;
     line-height: 51px;
-
     color: #96989B;
 }
 
@@ -39,29 +38,27 @@ h1 {
     font-size: 32px;
     line-height: 48px;
     color: #96989B;
-    div{
+
+    div {
         padding: 10px;
     }
-    b{
+
+    b {
         color: #504E4E;
     }
 }
 
-#modules-menu{
-    display: flex;
-    flex-direction: column;
-    color: #504E4E;
-    a{
-        color: #96989B;
-        display: none;
-    }
-
+#modules-menu {
+    width:200px;
+    height: 200px;
+    color: #96989B;
+    text-align: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
 }
 
-#modules-menu:active{
-    a{
-        display: block;
-    }
+a:hover{
+    color: #535557;
 }
-
-/* identical to box height */

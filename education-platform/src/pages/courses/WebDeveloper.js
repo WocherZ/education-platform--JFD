@@ -1,10 +1,27 @@
 import Header from "../../components/courses/Header"
 import '../../styles/courses/style.css'
 import account from '../../images/courses/account.png'
+import * as React from 'react';
+
+import {
+    List,
+    ListItemButton,
+    ListItemText, ListSubheader,
+    Collapse, ListItemIcon, ListItem, Typography
+} from '@mui/material';
+
+import { SendIcon, DraftsIcon, StarBorder, ExpandLess, ExpandMore, } from '@mui/icons-material'
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+
 
 
 export default function WebDeveloper() {
     const modules = ['HTML', 'CSS', 'JavaScript', 'TypeScript']
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(!open);
+    };
     return (
         <div>
             <Header />
@@ -20,12 +37,28 @@ export default function WebDeveloper() {
                 <p>Курс читает: <b>Преподаватель</b></p>
             </div>
             <div id="modules-menu">
-                <div id="modules">
-                <h2>Модули</h2>
-                    {modules.map(el => (
-                        <a href='' key={el}>{el}</a>
-                    ))}
-                </div>
+                <ListItemButton onClick={handleClick}>
+                    <Typography variant="button" display="block" sx={{ fontSize: '20px'}} gutterBottom>
+                        Модули
+                        {open ? <ExpandLess /> : <ExpandMore />}
+                    </Typography>
+                </ListItemButton>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        {modules.map(el => (
+                            <ListItem divider sx={{"&:hover": {
+                                borderColor: "#535557",
+                            }}}>
+                                <ListItemIcon>
+                                    <StarBorder />
+                                </ListItemIcon>
+                                <a href='' key={el}>{el}</a>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Collapse>
+
+
             </div>
         </div>
     )

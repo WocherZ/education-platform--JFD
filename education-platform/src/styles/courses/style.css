@@ -46,19 +46,18 @@ h1 {
 }
 
 #modules-menu {
-  display: flex;
-  flex-direction: column;
-  color: #504E4E;
-}
-#modules-menu a {
+  width: 200px;
+  height: 200px;
   color: #96989B;
-  display: none;
+  text-align: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
 }
 
-#modules-menu:active a {
-  display: block;
+a:hover {
+  color: #535557;
 }
-
-/* identical to box height */
 
 /*# sourceMappingURL=style.css.map */
