@@ -1,12 +1,12 @@
 import React  from "react";
 import {Typography } from "@mui/material";
-import MyAppBar from "../components/AppBar";
+import AppBar from "../components/AppBar";
 
 function CatalogPage() {
 
   return (
     <>
-    <MyAppBar
+    <AppBar
       isAuth={false}
       userName={null}
       userAvatar={null}

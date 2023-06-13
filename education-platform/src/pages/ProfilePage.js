@@ -1,13 +1,13 @@
 import React  from "react";
 import {Typography } from "@mui/material";
 import avatar from "../images/Ellipse5.png"
-import MyAppBar from "../components/AppBar";
+import AppBar from "../components/AppBar";
 
 function ProfilePage() {
 
   return (
     <>
-    <MyAppBar
+    <AppBar
       isAuth
       userName="Иван Иванов"
       userAvatar={avatar}

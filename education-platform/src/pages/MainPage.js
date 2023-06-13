@@ -1,7 +1,8 @@
 import React  from "react";
-import {Typography } from "@mui/material";
+import {Typography, Button } from "@mui/material";
 // import avatar from "../images/Ellipse5.png"
-import MyAppBar from "../components/AppBar";
+import AppBar from "../components/AppBar";
+import { useNavigate } from 'react-router-dom';
 
 const pages = [["/catalog", "Каталог", true],
               ["/learn", "Мое обучение", false],
@@ -10,22 +11,24 @@ const pages = [["/catalog", "Каталог", true],
               ["/notification", "Уведомления", false]
               ]
 
-const menuPages = pages.map((item) =>  <Typography
-              key={item[0]}
-              variant="h5"
-              color="inherit"
-              noWrap
-              component="a"
-              href={item[0]}
-              sx={{
-                mr: 1,
-                display: 'block' 
-              }}>{item[1]} ( Показывает меню {!item[2] ? "авторизованного" : "неавторизованного"} пользователя)}</Typography>)
     
 function MainPage() {
+  const navigate = useNavigate()
+  const menuPages = pages.map((item) =>  <Button
+  key={item[0]}
+  onClick={navigate.bind(this, item[0])}
+  variant="h5"
+  noWrap
+  sx={{
+    mr: 1,
+    display: 'block' 
+  }}>{item[1]} ( Показывает меню {!item[2] ? "авторизованного" : "неавторизованного"} пользователя)
+  </Button>)
+
+
   return (
     <>
-    <MyAppBar
+    <AppBar
       isAuth={false}
       userName={null}
       userAvatar={null}

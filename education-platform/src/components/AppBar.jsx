@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
+import {Button, AppBar as MuiAppBar} from '@mui/material';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -13,13 +13,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Avatar, Divider, Link} from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
+import { useNavigate } from 'react-router-dom';
 
 // path, pageName, no need Auth
 const pages = [["/catalog", "Каталог", true],
               ["/learn", "Мое обучение", false],
               ["/study", "Преподавание", false]
               ]
-const currentPage = window.location.pathname;
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,8 +61,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function MyAppBar( {isAuth, userName, userAvatar, notification }) {
+export default function AppBar( {isAuth, userName, userAvatar, notification }) {
   
+  let currentPage = window.location.pathname;
+  const navigate = useNavigate();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -71,8 +74,11 @@ export default function MyAppBar( {isAuth, userName, userAvatar, notification })
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (href=null) => {
     setAnchorElNav(null);
+    if (href) 
+    {navigate(href);
+    }
   };
 
 
@@ -80,10 +86,12 @@ export default function MyAppBar( {isAuth, userName, userAvatar, notification })
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (href=null) => {
     setAnchorEl(null);
+    if (href) 
+      {navigate(href);
+      }
   };
-
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -100,75 +108,63 @@ export default function MyAppBar( {isAuth, userName, userAvatar, notification })
         horizontal: 'right',
       }}
       open={isMenuOpen}
-      onClose={handleMenuClose}
+      onClose={handleMenuClose.bind(this, null)}
     >
-      <MenuItem onClick={handleMenuClose}>
-        <Link href="/profile" color="inherit">Профиль</Link>
+      <MenuItem onClick={handleMenuClose.bind(this, "/profile")}>Профиль
       </MenuItem>
       {
         {notification} ? 
-        <MenuItem onClick={handleMenuClose}>
-          <Link href="/notification" color="inherit">Уведомления ({notification})</Link>
-          </MenuItem>
+        <MenuItem onClick={handleMenuClose.bind(this, "/notification")}>Уведомления ({notification})
+        </MenuItem>
         :
-        <MenuItem onClick={handleMenuClose}>
-          <Link href="/notification" color="inherit">Уведомления</Link>
+        <MenuItem onClick={handleMenuClose.bind(this, "/notification")}>Уведомления
         </MenuItem>
       }
-      
       <Divider/>
-      <MenuItem onClick={handleMenuClose}>
-        <Link href="/" color="inherit">Выйти</Link>
+      <MenuItem onClick={handleMenuClose.bind(this, "/")}>Выйти
       </MenuItem>
     </Menu>
   );
 
   const menuAppBarPages = isAuth ? pages 
         :   pages.filter(item => isAuth ? true : item[2]);
+  
   const menuAppBar = menuAppBarPages.map(function(item, i) {
-    const variant = item[0].includes(currentPage) && currentPage.length > 1 ? "h6" : "p";
+    const fontWeight = item[0].includes(currentPage) && currentPage.length > 1 ? 700 : 500;
     return  (  
-       <Box key={item[1]}>
-        <Typography
-          variant={variant}
+       <Button key={item[0]}
           color="inherit"
-          noWrap
-          component="a"
-          href={item[0]}
+          onClick={navigate.bind(this, item[0])}
           sx={{
             mr: 1,
             color: 'inherit',
             pl: 0.5,
             pr: 0.5,
-            textDecoration: 'none',
+            fontWeight: fontWeight,
             display: { xs: 'none', md: 'block' }
           }}
-        >{item[1]}</Typography>
-       </Box>
+       >{item[1]}
+      </Button>
     )
   });
-  
+
   const menuNavBarPages = menuAppBarPages.map((item) => (
-      <MenuItem key={item[0]} onClick={handleCloseNavMenu}>
+      <MenuItem key={item[0]} onClick={handleCloseNavMenu.bind(this, item[0])}>
         <Typography textAlign="center"
-          component="a"
-          href={item[0]}
-          sx={{color: 'inherit', textDecoration: 'none'}}
         >{item[1]}</Typography>
       </MenuItem>
     ))
  
-  
+  console.log("currentPage " + currentPage);
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <MuiAppBar position="static">
         <Toolbar>
         <Box>
           <Typography
               variant="h5"
               noWrap
-              component="a"
-              href="/"
+              onClick={navigate.bind(this, "/")}
               sx={{
                 mr: 1,
                 color: 'inherit',
@@ -254,7 +250,7 @@ export default function MyAppBar( {isAuth, userName, userAvatar, notification })
           }
           </Box>
         </Toolbar>
-      </AppBar>
+      </MuiAppBar>
       {renderMenu}
     </Box>
   );
