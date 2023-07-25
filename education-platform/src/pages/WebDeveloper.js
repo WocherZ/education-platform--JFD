@@ -1,7 +1,7 @@
 import Header from "../components/courses/Header"
 import AppBar from "../components/AppBar";
-import '../../styles/courses/style.css'
-import account from '../../images/courses/account.png'
+import '../styles/courses/style.css'
+import account from '../images/courses/account.png'
 import * as React from 'react';
 
 import {
