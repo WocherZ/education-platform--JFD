@@ -1,4 +1,5 @@
-import Header from "../../components/courses/Header"
+import Header from "../components/courses/Header"
+import AppBar from "../components/AppBar";
 import '../../styles/courses/style.css'
 import account from '../../images/courses/account.png'
 import * as React from 'react';
@@ -24,7 +25,7 @@ export default function WebDeveloper() {
     };
     return (
         <div>
-            <Header />
+            <AppBar />
             <h1>Веб-разработка</h1>
             <div id="description">
                 <p>Вы изучите HTML, CSS, языки программирования JavaScript, TypeScript, библиотеку React.
