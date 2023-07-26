@@ -1,8 +1,8 @@
-import Header from "../components/courses/Header"
+
 import AppBar from "../components/AppBar";
 import '../styles/courses/style.css'
 import account from '../images/courses/account.png'
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
     List,
@@ -17,12 +17,28 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 
 
 export default function WebDeveloper() {
-    const modules = ['HTML', 'CSS', 'JavaScript', 'TypeScript']
+    const course = 'webcourse'
+    // const modules = ['HTML', 'CSS', 'JavaScript', 'TypeScript']
+    const [modules, setModules] = React.useState([]);
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
         setOpen(!open);
     };
+
+    useEffect(() => {
+        const getModules = async () => {
+           const response = await fetch(
+              `http://localhost:3001/${course}`,{
+              }
+           );
+           const data = await response.json();
+           console.log(data);
+           setModules(data.modules);
+        };
+        getModules();
+     }, [])
+     
     return (
         <div>
             <AppBar />
@@ -58,8 +74,6 @@ export default function WebDeveloper() {
                         ))}
                     </List>
                 </Collapse>
-
-
             </div>
         </div>
     )
