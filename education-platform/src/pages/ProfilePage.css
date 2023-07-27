@@ -1,0 +1,96 @@
+
+
+#setBack {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #F5F5F5 inherit;
+    font-family: Poppins;
+    text-align: center;
+}
+
+#setMain {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 2px 200px 300px 250px 2px 50px 120px;
+    margin: 50px auto 100px auto;
+    width: 800px;
+    background: white;
+   
+}
+#setHead {
+    text-align: left;
+    margin-left: 20px;
+    margin-right: auto;
+    margin-top: 10px;
+    height: 50px;
+    width:100%;
+  
+}
+
+
+
+#profileTop {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    margin: 20px 0 30px 0;
+    width: 100%;
+}
+
+.stdPhoto {
+border-radius:50%;
+width:100px;
+height:100px;
+
+}
+#stdDet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   
+}
+#leftDet {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 130px 80px;
+    align-items:center;
+}
+#rightDet {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 130px 80px;
+    align-items: center;
+}
+
+#compDet {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 150px;   
+    
+    margin-top:20px;
+}
+#orgDet {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+#aboutDet {
+    width: 620px;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0 auto 0 auto;
+}
+
+#stdSecurityDet {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 20px auto 0 auto;
+}
+
+
+#securityDet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
