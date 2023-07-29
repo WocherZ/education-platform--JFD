@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "bb8fc9e8-ce9f-4eed-b790-8fc4ab7ca7d3",
+		"name": "JFD 3001",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19399953"
+	},
+	"item": [
+		{
+			"name": "public",
+			"item": [
+				{
+					"name": "register teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\" : \"user@mail.ru\",\n\"password\" : \"123\",\n\"name\" : \"Андрей\",\n\"surname\" : \"Кузнецов\",\n\"role\": \"teacher\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api.auth.3001}}/register",
+							"host": [
+								"{{api.auth.3001}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\" : \"user2@mail.ru\",\n\"password\" : \"1234\",\n\"name\" : \"Ольга\",\n\"surname\" : \"Петрова\",\n\"role\": \"student\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api.auth.3001}}/register",
+							"host": [
+								"{{api.auth.3001}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\" : \"user@mail.ru\",\n\"password\" : \"123\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api.auth.3001}}/login",
+							"host": [
+								"{{api.auth.3001}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\" : \"user2@mail.ru\",\n\"password\" : \"1234\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api.auth.3001}}/login",
+							"host": [
+								"{{api.auth.3001}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api.user.3001}}/",
+							"host": [
+								"{{api.user.3001}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api.user.3001}}/1",
+							"host": [
+								"{{api.user.3001}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change by ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2OTA0ODMzNzd9._SgLeIOj89cARFh6gsO_PbCuMzaIxAOvdk8Y9f3ctwA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api.user.3001}}/1",
+							"host": [
+								"{{api.user.3001}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api.course.3001}}",
+							"host": [
+								"{{api.course.3001}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api.course.3001}}/1",
+							"host": [
+								"{{api.course.3001}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api.course.3001}}/search?name=Fullstack",
+							"host": [
+								"{{api.course.3001}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Fullstack"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add new",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2OTA0Nzg4Mjh9.1Z9XvZbg8yNPaCjY-LLUJs3eAe1dEjYDPqS9CZ2cqeM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"JS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api.course.3001}}/",
+							"host": [
+								"{{api.course.3001}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "join student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6InRlYWNoZXIiLCJpYXQiOjE2OTA2MTgzODh9.AzVGfdFqULWrHttr2B599-9VPayCwSzHB4dE708eTqk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"courseId\": \"1\",\n    \"userId\" : \"2\",\n    \"role\": \"student\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api.course.3001}}/join",
+							"host": [
+								"{{api.course.3001}}"
+							],
+							"path": [
+								"join"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change by ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2OTA0ODMzNzd9._SgLeIOj89cARFh6gsO_PbCuMzaIxAOvdk8Y9f3ctwA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Fullstack\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api.course.3001}}/1",
+							"host": [
+								"{{api.course.3001}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
