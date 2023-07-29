@@ -7,6 +7,7 @@
     background: #F5F5F5 inherit;
     font-family: Poppins;
     text-align: center;
+    overflow-y:auto;
 }
 
 #setMain {
@@ -16,7 +17,7 @@
     margin: 50px auto 100px auto;
     width: 800px;
     background: white;
-   
+    
 }
 #setHead {
     text-align: left;
