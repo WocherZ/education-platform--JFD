@@ -6,6 +6,9 @@ import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import reportWebVitals from './reportWebVitals';
 
+import './styles/reset.css';
+import './styles/common.css';
+
 const theme = createTheme(
   {
     palette: {
