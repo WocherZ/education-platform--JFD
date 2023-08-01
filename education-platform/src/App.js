@@ -8,7 +8,6 @@ import MainPage from "./pages/MainPage";
 import NotificationPage from "./pages/NotificationPage";
 import ProfilePage from "./pages/ProfilePage";
 import CatalogPage from "./pages/CatalogPage";
-import WebDeveloper from "./pages/WebDeveloper";
 
 function App() {
 

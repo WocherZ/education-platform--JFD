@@ -1,0 +1,163 @@
+
+
+#setBack {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #F5F5F5 inherit;
+    font-family: Poppins;
+    text-align: center;
+    overflow-y:auto;
+}
+
+#setMain {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 2px 200px 300px 250px 2px 50px 120px;
+    margin: 50px auto 100px auto;
+    width: 55%;
+    background: white;
+    
+}
+#setHead {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+}
+
+
+
+#profileTop {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    margin: 20px 0 30px 0;
+    width: 100%;
+}
+
+.stdPhoto {
+border-radius:50%;
+width:100px;
+height:100px;
+
+}
+#stdDet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   
+}
+#leftDet {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 130px 80px;
+    align-items:center;
+}
+#rightDet {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 130px 80px;
+    align-items: center;
+}
+
+#compDet {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 150px;   
+    
+    margin-top:20px;
+}
+#orgDet {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+#aboutDet {
+    /* width: 620px;*/
+    width: 78%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0 auto 0 auto;
+}
+
+#stdSecurityDet {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 20px auto 0 auto;
+}
+
+
+#securityDet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 750px) {
+
+    #setMain {       
+      
+        grid-template-rows: 50px 2px 300px 600px 350px 2px 50px 320px;
+      
+      
+    }
+
+    #profileTop {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        justify-items: left;
+       
+    }
+
+    #photoArea {
+        margin-bottom: 20px;
+        margin-left: 60px;
+    }
+
+    #buttonArea {
+        margin-left: 50px;
+    }
+
+    #stdDet {
+        grid-template-columns: 1fr;
+        justify-items: left;
+    }
+    
+
+
+    #compDet {
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px 150px;
+        margin-top: 20px;
+    }
+
+    #orgDet {
+        margin: 5px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: left;
+    }
+
+    #aboutDet {
+        /* width: 620px;*/
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 0;
+        justify-items: left;
+    }
+
+    #stdSecurityDet {
+        grid-template-columns: 1fr;
+        margin: 0;
+        justify-items: left;
+    }
+
+
+    #securityDet {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+}
