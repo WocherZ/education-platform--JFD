@@ -30,20 +30,33 @@ export default function ProfilePage() {
     };
 
     return (
+
+            
+
+   
+
         <div id="setBack">
+
+            <AppBar
+                isAuth
+                userName="Иван Иванов"
+                userAvatar={avatar}
+                notification={3}
+            />
+            
             <div id="setMain">
                 <div id="setHead">
                     <Typography variant="h5" gutterBottom>
-                        <strong>Настройки</strong>
+                        <strong>Профиль пользователя</strong>
                     </Typography>
                 </div>
                 <Divider />
                 <div id="profileTop">
                     <div>
                         <Typography variant="h6" gutterBottom>
-                            Профиль
+                            Персональные данные
                          </Typography></div>
-                    <div>
+                    <div id="photoArea" >
                         <div> <img class="stdPhoto" src="images/std_photo.jpg" alt="StudentFoto" title="StudentFoto" /></div>
                         <div> <Link href="#">Изменить</Link></div>
                     </div>
