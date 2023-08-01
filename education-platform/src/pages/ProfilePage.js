@@ -60,8 +60,8 @@ export default function ProfilePage() {
                         <div> <img class="stdPhoto" src="images/std_photo.jpg" alt="StudentFoto" title="StudentFoto" /></div>
                         <div> <Link href="#">Изменить</Link></div>
                     </div>
-                    <div>
-                        <div>
+                    <div id="buttonArea">
+                        <div >
                             <Button id="saveBtn" variant="contained">Сохранить</Button>
                         </div>
                         <div>

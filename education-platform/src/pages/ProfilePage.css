@@ -111,7 +111,12 @@ height:100px;
     }
 
     #photoArea {
-        margin-bottom:20px;
+        margin-bottom: 20px;
+        margin-left: 60px;
+    }
+
+    #buttonArea {
+        margin-left: 50px;
     }
 
     #stdDet {
