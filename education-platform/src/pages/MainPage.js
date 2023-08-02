@@ -4,6 +4,7 @@ import {Typography, Button } from "@mui/material";
 import AppBar from "../components/AppBar";
 import { useNavigate } from 'react-router-dom';
 import "../styles/main_page.css";
+import MainTop from "../components/main_page/MainTop";
 
 const pages = [["/catalog", "Каталог", true],
               ["/learn", "Мое обучение", false],
@@ -28,48 +29,14 @@ function MainPage() {
 
 
   return (
-    <>
-    <div className="main_top__wrapper">
-      <div className="main_top__icons-wrapper">
-        <div className="main_top__icons-wrapper-left">
-          <div className="main_top__icons"></div>
-          <div className="main_top__icons"></div>
-          <div className="main_top__icons"></div>
-        </div>
-        <div className="hidden"></div>
-      </div>
-
-      <div className="main_top__brands">
-        <div className="main_top__brands-wrapper">
-          <div className="main_top__brand"></div>
-          <div className="main_top__brand"></div>
-          <div className="main_top__brand"></div>
-          <div className="main_top__brand"></div>
-          <div className="main_top__brand"></div>
-          <div className="main_top__brand"></div>
-        </div>
-      </div>
-      
-      <div className="main_top">
-        <div className="main_top__text">
-          <Typography variant="text" className="main_top__text">
-            Access Your Class 
-          </Typography>
-          <Typography variant="text" className="main_top__text main_top__text-blue">
-            From Anywhere & Anytime
-          </Typography>
-        </div>
-        <div className="main_top__image">
-          
-        </div>
-      </div>
-    </div>
+    <>    
     <AppBar
       isAuth={false}
       userName={null}
       userAvatar={null}
       notification={0}
       />
+      <MainTop></MainTop>
       <Typography variant="h3">
        HomePage
       </Typography>

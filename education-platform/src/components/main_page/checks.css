@@ -1,0 +1,24 @@
+.checks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 160px;
+}
+
+.checks__list {
+    display: flex;
+    justify-content: space-between;
+    min-width: 450px
+}
+.main_top__checks-wrapper-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 50%;
+}
+
+.hidden {
+    min-width: 50%;
+}
