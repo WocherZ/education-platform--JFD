@@ -4,31 +4,17 @@ import AppBar from "../components/AppBar";
 import ProfileComp from "../components/ProfileComp/ProfileComp";
 
 
-export default function ProfilePage() {
-     
- 
-    return (
-
-            
-
-   
+export default function ProfilePage() {   
+    return (    
         <div>
-
             <AppBar
                 isAuth
                 userName="Иван Иванов"
                 userAvatar={avatar}
                 notification={3}
             />
-
-            <ProfileComp         
-                
-                />
-
-
-        
-        </div>
-    
+            <ProfileComp />
+        </div>    
     )
 
 
