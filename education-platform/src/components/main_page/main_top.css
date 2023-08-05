@@ -63,6 +63,7 @@
 }
 
 .button_top {
+    list-style-type: none;
     width: 208px;
     height: 84px;
     flex-shrink: 0;
@@ -73,6 +74,7 @@
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
+
 }
 
 .play_icon {
@@ -94,6 +96,22 @@
     font-style: normal;
     font-weight: 600;
     padding-left: 12px;
+}
+
+.links {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    color: #96989B;
+    font-family: 'Poppins';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 193.5%; /* 32.895px */
+}
+
+.links_link {
+    padding-left: 60px;
 }
 
 

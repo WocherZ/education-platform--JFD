@@ -1,0 +1,17 @@
+.social_networks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 57px;
+}
+
+.social_networks__list {
+    display: flex;
+    justify-content: space-between;
+    min-width: 450px
+}
+
+.hidden {
+    min-width: 50%;
+}
