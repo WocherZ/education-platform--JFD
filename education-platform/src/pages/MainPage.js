@@ -4,7 +4,7 @@ import {Typography, Button } from "@mui/material";
 import AppBar from "../components/AppBar";
 import { useNavigate } from 'react-router-dom';
 import "../styles/main_page.css";
-import MainTop from "../components/main_page/MainTop";
+import Main from "../components/main_page/MainTop";
 
 const pages = [["/catalog", "Каталог", true],
               ["/learn", "Мое обучение", false],
@@ -36,7 +36,7 @@ function MainPage() {
       userAvatar={null}
       notification={0}
       />
-      <MainTop></MainTop>
+      <Main></Main>
       <Typography variant="h3">
        HomePage
       </Typography>

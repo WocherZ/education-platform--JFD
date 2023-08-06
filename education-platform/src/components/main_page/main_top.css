@@ -1,7 +1,8 @@
 .main_top {
     position: relative;
     background-color: #F7F7F7;
-    min-width: 100%;
+    padding-left: 140px;
+    padding-right: 140px;
     padding: 0 140px 0 140px;
     font-weight: 900;
     z-index: -2;
@@ -74,7 +75,12 @@
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
+    cursor: pointer;
+}
 
+.button_top:hover {
+    background-color: #2980b9;
+    color: black;
 }
 
 .play_icon {
@@ -114,4 +120,7 @@
     padding-left: 60px;
 }
 
-
+.medium_block {
+    background-color: #FFF;
+    min-height: 282px;
+}

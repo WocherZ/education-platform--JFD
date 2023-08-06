@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 import './styles/reset.css';
 import './styles/common.css';
+import './styles/main_page.css';
 
 const theme = createTheme(
   {

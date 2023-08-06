@@ -1,0 +1,72 @@
+.categories {
+    min-width: 100%;
+    background-color: #FAFEFF;
+    padding-top: 70px;
+    padding-left: 140px;
+    padding-right: 140px;
+    padding-bottom: 113px;
+}
+
+.categories_header {
+    padding: 0;
+    color: #00ABBD;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.categories_text {
+    padding-top: 10px;
+    color: #5F6368;
+    font-family: 'Poppins';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.links_to {
+    padding-top: 80px;
+}
+
+.links_to__group {
+    display: flex;
+    justify-content: end;
+}
+
+.left_link {
+    background-image: url('../../images/main/Group\ 3.svg');
+    background-repeat: no-repeat;
+    width: 7px;
+    height: 13px;
+    padding-right: 13px;
+}
+
+.right_link {
+    background-image: url('../../images/main//Group\ 744.svg');
+    background-repeat: no-repeat;
+    width: 7px;
+    height: 13px;
+}
+
+.courses_container {
+    padding: 17px 0 0 0;
+
+}
+
+.courses_list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.courses {
+    color: #96989B;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+}
