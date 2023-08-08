@@ -38,7 +38,7 @@ async function start() {
     });    
   } catch (e)
   {
-    logger.error(`app failed`);
+    logger.error(`app failed${e}`);
   }
 }
 start();

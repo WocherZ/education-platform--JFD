@@ -13,10 +13,13 @@ import {
 
 import { SendIcon, DraftsIcon, StarBorder, ExpandLess, ExpandMore, } from '@mui/icons-material'
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-
-
+import dotenv from 'dotenv';
+dotenv.config({
+    path: path.resolve(__dirname, 'env', `.${process.env.NODE_ENV}.env`)
+  }); 
 
 export default function WebDeveloper() {
+    const port = process.env.PORT
     const course = 'webcourse'
     // const modules = ['HTML', 'CSS', 'JavaScript', 'TypeScript']
     const [modules, setModules] = React.useState([]);
@@ -29,7 +32,7 @@ export default function WebDeveloper() {
     useEffect(() => {
         const getModules = async () => {
            const response = await fetch(
-              `http://localhost:3001/${course}`,{
+              `http://localhost:${port}/${course}`,{
               }
            );
            const data = await response.json();

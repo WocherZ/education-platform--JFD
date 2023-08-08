@@ -2,7 +2,10 @@ import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement,  BelongsToMa
 import User from './user.model';
 import UserCourse from './userCourse.model';
 
-@Table
+@Table({
+  createdAt: false,
+  updatedAt: false,
+})
 export default class Course extends Model {
   @PrimaryKey
   @AutoIncrement
