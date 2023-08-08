@@ -1,5 +1,6 @@
-import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement,  BelongsToMany, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement,  BelongsToMany, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 import User from './user.model';
+import Modules from './modules.model';
 import UserCourse from './userCourse.model';
 
 @Table({
@@ -21,6 +22,9 @@ export default class Course extends Model {
 
   @BelongsTo(()=>User)
   user!: User;
+
+  @HasMany(()=>Modules)
+  modules!: Modules[];
 
   @BelongsToMany(() => User, ()=> UserCourse)
   users!: User[];

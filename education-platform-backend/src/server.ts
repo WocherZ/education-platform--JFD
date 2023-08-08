@@ -31,7 +31,7 @@ app.use(ErrorMiddleware);
 
 async function start() {
   try {
-    await sequelize.sync({alter: true, force: true});
+    await sequelize.sync({alter: true});
     logger.info(`sequelize sync`);
     app.listen(port, () => {
       logger.info(`app listening on port ${port}`);

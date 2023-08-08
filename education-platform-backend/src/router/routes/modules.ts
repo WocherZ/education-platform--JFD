@@ -1,11 +1,9 @@
 import { Router } from "express"; 
-import controller from "../../controller/course.controller";
-import requireJwtAuth from "../../middlewares/user.middleware";
+import controller from "../../controller/modules.controller";
 
 
 const router: Router = Router(); 
 
-router.get('/modules?:name', requireJwtAuth, controller.getByName);
-
+router.get('/:id', controller.getModules);
 
 export default router;

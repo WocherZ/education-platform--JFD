@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement,  ForeignKey} from 'sequelize-typescript';
+import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement,  ForeignKey, BelongsTo} from 'sequelize-typescript';
 import Course from './course.model';
 
 @Table({
@@ -17,5 +17,9 @@ export default class Modules extends Model {
   @ForeignKey(()=>Course)
   @Column(DataType.INTEGER)
   courseId!: number;
+
+  @BelongsTo(() => Course)
+  course!: Course[];
+ 
  
 }

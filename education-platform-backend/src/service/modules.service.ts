@@ -1,10 +1,16 @@
-import Course from "../models/course.model";
+import Modules from "../models/modules.model";
 
 
 class ModulesseService {
   
-  async getByName(name: string){
-    const modules = await Course.findAll({where: {name: name}});
+  async getModules(id: number){
+    const modules = await Modules.findAll(
+      {
+        where:{
+          courseId:id
+        }
+      }
+    );
     return modules;
   }
 
