@@ -1,6 +1,8 @@
 import React  from "react";
-import {Typography } from "@mui/material";
+import {Grid, Typography } from "@mui/material";
 import AppBar from "../components/AppBar";
+import Courses from "../components/Courses";
+
 
 function CatalogPage() {
 
@@ -15,7 +17,18 @@ function CatalogPage() {
       <Typography>
       Каталог курсов
       </Typography>
+
+      <Grid container>
+        <Grid item xs={12} md={6} lg={4}>
+          <Paper> </Paper> 
+        </Grid>
+
+      </Grid>
+      <Courses/>
+      
     </>
+
+    
   );
 }
 
