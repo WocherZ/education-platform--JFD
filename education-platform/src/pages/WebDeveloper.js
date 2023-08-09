@@ -13,15 +13,8 @@ import {
 
 import { SendIcon, DraftsIcon, StarBorder, ExpandLess, ExpandMore, } from '@mui/icons-material'
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import dotenv from 'dotenv';
-dotenv.config({
-    path: path.resolve(__dirname, 'env', `.${process.env.NODE_ENV}.env`)
-  }); 
 
 export default function WebDeveloper() {
-    const port = process.env.PORT
-    const course = 'webcourse'
-    // const modules = ['HTML', 'CSS', 'JavaScript', 'TypeScript']
     const [modules, setModules] = React.useState([]);
     const [open, setOpen] = React.useState(false);
 
@@ -32,12 +25,12 @@ export default function WebDeveloper() {
     useEffect(() => {
         const getModules = async () => {
            const response = await fetch(
-              `http://localhost:${port}/${course}`,{
+              `http://localhost:3001/api/modules/1`,{
               }
            );
            const data = await response.json();
-           console.log(data);
-           setModules(data.modules);
+           console.log(data.result);
+           setModules(data.result);
         };
         getModules();
      }, [])
@@ -72,7 +65,7 @@ export default function WebDeveloper() {
                                 <ListItemIcon>
                                     <StarBorder />
                                 </ListItemIcon>
-                                <a href='' key={el}>{el}</a>
+                                <a href='' key={el.name}>{el.name}</a>
                             </ListItem>
                         ))}
                     </List>
