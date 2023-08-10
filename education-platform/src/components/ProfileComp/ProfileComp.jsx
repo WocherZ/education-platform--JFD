@@ -17,18 +17,8 @@ export default function ProfileComp() {
     };
 
     return (
-
-
-
-
         <div>
-
-
-
             <div id="setBack">
-
-
-
                 <div id="setMain">
                     <div id="setHead">
                         <Typography variant="h5" gutterBottom>
