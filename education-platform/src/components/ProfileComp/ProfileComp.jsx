@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Avatar, Link, Button, Divider, IconButton, OutlinedInput, InputLabel, InputAdornment, TextField, Typography, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -8,15 +8,40 @@ import "./ProfileComp.css";
 
 export default function ProfileComp() {
 
+
     const [showPassword, setShowPassword] = React.useState(false);
+
+    const [UserData, setUserData] = React.useState({
+        id: 0,
+        email: '1',
+        role: '2',
+        name: '3',
+        surname: '4'
+     });
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
 
+   // data = null;
+
+    useEffect(() =>{ 
+        const getUserData = async () => {
+            const response = await fetch('http://localhost:3001/api/user/?id=10',{headers:
+             {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU'}});
+            const  data = await response.json();
+            console.log(data.result);           
+            setUserData(data.result);
+        };
+        getUserData();
+    },[])
+   // console.log(UserData);   
+ 
+
     return (
+        <form>
         <div>
             <div id="setBack">
                 <div id="setMain">
@@ -49,7 +74,8 @@ export default function ProfileComp() {
 
                     <div id="stdDet">
                         <div id="leftDet">
-                            <div><TextField label='Полное имя' variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Фамилия пользователя' value={UserData.surname} //onChange={event => setUserData(event.target.value)} 
+                            variants='outlined'  InputLabelProps={{ shrink: true }} /></div>
                             <div>
                                 <FormControl>
                                     <FormLabel>Пол</FormLabel>
@@ -64,8 +90,8 @@ export default function ProfileComp() {
                             </div>
                         </div>
                         <div id="rightDet">
-                            <div><TextField label='Имя пользователя' variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label='Электронная почта' variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Имя пользователя' defaultValue={UserData.name} variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Электронная почта' value={UserData[0]}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
                             <div><TextField label="Телефон" type="text" InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /></div>
                         </div>
 
@@ -78,12 +104,13 @@ export default function ProfileComp() {
                         </div>
                         <div id="aboutDet">
                             <div>
-                                <TextField label="О себе:" multiline rows={3} fullWidth InputLabelProps={{ shrink: true }} />
+                                <TextField label="О себе:" multiline rows={3} defaultValue={UserData} fullWidth InputLabelProps={{ shrink: true }} />
                             </div>
                         </div>
 
                     </div>
                     <Divider />
+
 
                     <div id="stdSecurityDet">
                         <div>
@@ -160,6 +187,7 @@ export default function ProfileComp() {
                 </div>
             </div>
         </div>
+        </form>
     )
 
 
