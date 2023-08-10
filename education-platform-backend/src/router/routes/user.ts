@@ -8,5 +8,7 @@ const router: Router = Router();
 router.get('/:id', requireJwtAuth, controller.getById);
 router.get('/', requireJwtAuth, controller.getAll);
 router.put('/:id', requireJwtAuth, controller.changeById);
+router.get('/course/:courseId', controller.getUsersByCourseId);
+
 
 export default router;

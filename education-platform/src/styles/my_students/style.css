@@ -1,0 +1,127 @@
+.App {
+    min-width: 1020px;
+}
+
+.navbar {
+    height: 100%;
+    width: 16.33%;
+    float: left;
+    padding: 15px;
+    border-right: 1px solid hsl(0, 7%, 91%);
+}
+
+.label {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 180px;
+}
+
+.table-navbar td p {
+    text-align: left;
+    font-size: 15px;
+    margin-left: 10px;
+    color: #8C8888;
+}
+
+table-navbar tr {
+    height: 60px;
+}
+
+a {
+    text-decoration: none;
+    color: #8C8888;
+}
+
+
+.header {
+    width: 80.33%;
+    display: grid;
+    grid-template-columns: auto 4fr auto auto auto;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.header>div {
+    padding-left: 40px;
+}
+
+input {
+    width: 175px;
+    height: 48px;
+    left: 450px;
+    top: 59px;
+    background: #FAFBFE;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 117px;
+    border: 1px solid hsl(0, 7%, 91%);
+    text-align: center;
+}
+
+
+.wrapper {
+    display: inline;
+
+}
+
+.modal {
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    height: 400px;
+    min-height: 300px;
+    min-width: 600px;
+    width: 800px;
+    background-color: rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    transform: scale(0);
+    box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+}
+
+.modal.active {
+    transform: scale(1);
+
+}
+
+.table-my-students {
+    width: 500px;
+    /* Ширина таблицы */
+    border-collapse: collapse;
+    /* Убираем двойные линии между ячейками */
+}
+
+h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+th {
+    font-size: 15px;
+    margin-left: 10px;
+    color: #8C8888;
+    border-right: 1px solid #8C8888;
+}
+
+.dashboard {
+    display: flex;
+    margin: 0 auto 0 auto;
+
+}
+
+.lessons {
+    background-color: pink;
+    height: 200px;
+    width: 200px;
+    margin-left: 30px;
+
+}
+
+.students {
+    background-color: rgb(192, 224, 255);
+    height: 200px;
+    width: 200px;
+    margin-left: 30px;
+}

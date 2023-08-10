@@ -1,0 +1,63 @@
+#header {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr auto auto auto;
+  align-items: center;
+  text-align: center;
+}
+#header div {
+  padding: 10px;
+}
+
+h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 90px;
+  color: #504E4E;
+  text-align: center;
+}
+
+#description {
+  text-align: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 51px;
+  color: #96989B;
+}
+
+#teacher {
+  display: flex;
+  flex-direction: row;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  color: #96989B;
+}
+#teacher div {
+  padding: 10px;
+}
+#teacher b {
+  color: #504E4E;
+}
+
+#modules-menu {
+  width: 200px;
+  height: 200px;
+  color: #96989B;
+  text-align: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+}
+
+a:hover {
+  color: #535557;
+}
+
+/*# sourceMappingURL=style.css.map */

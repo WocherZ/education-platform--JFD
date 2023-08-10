@@ -1,4 +1,5 @@
 import User from "../models/user.model";
+import UserCourse from "../models/userCourse.model";
 import { RegisterRequest, LoginRequest  } from "../dtos/auth.dto";
 import { UserChangeRequest } from "../dtos/user.dto";
 import bcrypt from 'bcrypt';
@@ -62,6 +63,16 @@ class UserService {
       return {userId, name, surname};
     }
    return user;
+  }
+
+  async getUsersByCourseId(courseId: number){
+    const course = await UserCourse.findAll({where: {courseId: courseId}});
+    const users = []
+    for (let i = 0; i < course.length; i += 1) {
+      // добавляем каждый UserId в массив
+      users.push(course[i].userId)
+    }
+    return users;
   }
 }
 export default new UserService();
