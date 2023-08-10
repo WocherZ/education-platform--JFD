@@ -15,8 +15,10 @@ import { SendIcon, DraftsIcon, StarBorder, ExpandLess, ExpandMore, } from '@mui/
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 
 export default function WebDeveloper() {
+    const courseId = 1
     const [modules, setModules] = React.useState([]);
     const [open, setOpen] = React.useState(false);
+    const [teacher, setTeacher] = React.useState([]);
 
     const handleClick = () => {
         setOpen(!open);
@@ -24,17 +26,30 @@ export default function WebDeveloper() {
 
     useEffect(() => {
         const getModules = async () => {
-           const response = await fetch(
-              `http://localhost:3001/api/modules/1`,{
-              }
-           );
-           const data = await response.json();
-           console.log(data.result);
-           setModules(data.result);
+            const response = await fetch(
+                `http://localhost:3001/api/modules/course/${courseId}`, {
+            }
+            );
+            const data = await response.json();
+            console.log(data.result);
+            setModules(data.result);
         };
         getModules();
-     }, [])
-     
+    }, [])
+
+    useEffect(() => {
+        const getTeacher = async () => {
+            const response = await fetch(
+                `http://localhost:3001/api/user/course/${courseId}`, {
+            }
+            );
+            const data = await response.json();
+            console.log(data.result);
+            setTeacher(data.result);
+        };
+        getTeacher();
+    }, [])
+
     return (
         <div>
             <AppBar />
@@ -47,11 +62,18 @@ export default function WebDeveloper() {
                 <div>
                     <img src={account} />
                 </div>
-                <p>Курс читает: <b>Преподаватель</b></p>
+                <p>Курс читает:
+                    {
+                        teacher.map(el => (
+                            <p><b>{el}</b></p>
+                        )
+                        )
+                    }
+                </p>
             </div>
             <div id="modules-menu">
                 <ListItemButton onClick={handleClick}>
-                    <Typography variant="button" display="block" sx={{ fontSize: '20px'}} gutterBottom>
+                    <Typography variant="button" display="block" sx={{ fontSize: '20px' }} gutterBottom>
                         Модули
                         {open ? <ExpandLess /> : <ExpandMore />}
                     </Typography>
@@ -59,9 +81,11 @@ export default function WebDeveloper() {
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {modules.map(el => (
-                            <ListItem divider sx={{"&:hover": {
-                                borderColor: "#535557",
-                            }}}>
+                            <ListItem divider sx={{
+                                "&:hover": {
+                                    borderColor: "#535557",
+                                }
+                            }}>
                                 <ListItemIcon>
                                     <StarBorder />
                                 </ListItemIcon>

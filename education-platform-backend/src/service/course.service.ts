@@ -48,7 +48,7 @@ class CourseService {
   }
   
   async getByName(name: string){
-    const courses = await Course.findAll({where: {name: name}});
+    const courses = await Course.findOne({where: {name: name}});
     return courses;
   }
 

@@ -11,6 +11,5 @@ router.use("/auth", authRouter);
 router.use("/user", userRouter);
 router.use("/course", courseRouter);
 router.use("/modules", courseModules);
-// router.use("/usercourse", userCourseRouter);
 
 export default router;
