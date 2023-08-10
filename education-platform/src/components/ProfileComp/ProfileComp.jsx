@@ -11,13 +11,9 @@ export default function ProfileComp() {
 
     const [showPassword, setShowPassword] = React.useState(false);
 
-    const [UserData, setUserData] = React.useState({
-        id: 0,
-        email: '1',
-        role: '2',
-        name: '3',
-        surname: '4'
-     });
+    const [UserData, setUserData] = React.useState([{
+        id: 0, email: '1', role: '2', name: '3', surname: '4'
+     }]);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -37,8 +33,13 @@ export default function ProfileComp() {
         };
         getUserData();
     },[])
-   // console.log(UserData);   
+  // console.log(UserData); 
+  // console.log(UserData.surname);   
  
+ //console.log(UserData.map(el => (el.surname)));
+
+ //console.log(UserData.name);
+
 
     return (
         <form>
@@ -74,7 +75,7 @@ export default function ProfileComp() {
 
                     <div id="stdDet">
                         <div id="leftDet">
-                            <div><TextField label='Фамилия пользователя' value={UserData.surname} //onChange={event => setUserData(event.target.value)} 
+                            <div><TextField label='Фамилия пользователя' value={UserData.map(el => (el.surname))} //onChange={event => setUserData(event.target.value)} 
                             variants='outlined'  InputLabelProps={{ shrink: true }} /></div>
                             <div>
                                 <FormControl>
@@ -90,8 +91,8 @@ export default function ProfileComp() {
                             </div>
                         </div>
                         <div id="rightDet">
-                            <div><TextField label='Имя пользователя' defaultValue={UserData.name} variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label='Электронная почта' value={UserData[0]}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Имя пользователя' value={UserData.map(el => (el.name))} variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Электронная почта' value={UserData.map(el => (el.email))}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
                             <div><TextField label="Телефон" type="text" InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /></div>
                         </div>
 
