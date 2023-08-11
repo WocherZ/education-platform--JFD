@@ -5,15 +5,13 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node .",
+    "start": "NODE_ENV=prod node ./dist/server.js",
     "prestart": "npm run build",
     "prebuild": "npm run lint",
     "lint": "eslint --cache --ext .ts .",
     "lint:fix": "eslint --cache --ext .ts . --fix",
     "dev": "cross-env NODE_ENV=dev nodemon ./src/server.ts",
-    "predev": "npm run lint",
-    "prod": "cross-env NODE_ENV=prod nodemon ./src/server.ts",
-    "preprod": "npm run lint"
+    "predev": "npm run lint"
   },
   "keywords": [],
   "author": "",

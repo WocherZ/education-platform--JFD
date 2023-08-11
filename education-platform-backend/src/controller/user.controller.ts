@@ -52,19 +52,19 @@ class Controller {
   async getUsersByCourseId(req : Request, res: Response, next: NextFunction){
     try {
       const id = Number(req.params["courseId"]);
-      console.log(id)
-      const teacherName = []
+      console.log(id);
+      const teacherName = [];
       if (Number.isInteger(id)) {
         const teachersId = await user.getUsersByCourseId(id);
-        console.log(teachersId)
+        console.log(teachersId);
         for (let i = 0; i < teachersId.length; i += 1) {
-          const userResult = await user.getById(teachersId[i])
+          const userResult = await user.getById(teachersId[i]);
           // получаем полное имя
-          const fullName = `${userResult?.dataValues.name} ${userResult?.dataValues.surname}`
+          const fullName = `${userResult?.dataValues.name} ${userResult?.dataValues.surname}`;
           // добавляем в список
-          teacherName.push(fullName)
+          teacherName.push(fullName);
         }
-        console.log(teacherName)
+        console.log(teacherName);
         res.status(200).json({message: "success", result: teacherName});
       } else {
         res.status(200).json({message: "Error, id is not integer"});

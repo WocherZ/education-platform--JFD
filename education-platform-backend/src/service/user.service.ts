@@ -67,10 +67,10 @@ class UserService {
 
   async getUsersByCourseId(courseId: number){
     const course = await UserCourse.findAll({where: {courseId: courseId}});
-    const users = []
+    const users = [];
     for (let i = 0; i < course.length; i += 1) {
       // добавляем каждый UserId в массив
-      users.push(course[i].userId)
+      users.push(course[i].userId);
     }
     return users;
   }

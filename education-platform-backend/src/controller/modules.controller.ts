@@ -7,7 +7,7 @@ class Controller {
     try {
       
       const courseId = Number(req.params["courseId"]);
-      console.log(courseId)
+      console.log(courseId);
       if (Number.isInteger(courseId)) {
         const modules = await modulesService.getModules(courseId);
         res.status(200).json({message: "success", result: modules});
