@@ -25,7 +25,7 @@ export default function ProfileComp() {
 
     useEffect(() =>{ 
         const getUserData = async () => {
-            const response = await fetch('http://localhost:3001/api/user/?id=10',{headers:
+            const response = await fetch('http://localhost:3001/api/user/?id=1',{headers:
              {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU'}});
             const  data = await response.json();
             console.log(data.result);           
@@ -33,12 +33,12 @@ export default function ProfileComp() {
         };
         getUserData();
     },[])
-  // console.log(UserData); 
+  console.log(UserData); 
   // console.log(UserData.surname);   
  
  //console.log(UserData.map(el => (el.surname)));
 
- //console.log(UserData.name);
+ console.log(UserData.name);
 
 
     return (
@@ -87,25 +87,25 @@ export default function ProfileComp() {
                                 </FormControl>
                             </div>
                             <div>
-                                <TextField label="Возраст" type="number" InputLabelProps={{ shrink: true, }} />
+                                <TextField label="Возраст"  value={UserData.map(el => (el.age))}  type="number" InputLabelProps={{ shrink: true, }} />
                             </div>
                         </div>
                         <div id="rightDet">
                             <div><TextField label='Имя пользователя' value={UserData.map(el => (el.name))} variants='outlined' InputLabelProps={{ shrink: true }} /></div>
                             <div><TextField label='Электронная почта' value={UserData.map(el => (el.email))}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label="Телефон" type="text" InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /></div>
+                            <div><TextField label="Телефон" type="text"  value={UserData.map(el => (el.phone))}  InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /></div>
                         </div>
 
                     </div>
                     <div id="compDet">
                         <div id="orgDet">
-                            <div><TextField label='Организация/Учебное заведение' variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label='Подразделение/Группа' variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Организация/Учебное заведение'  value={UserData.map(el => (el.organization))}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Подразделение/Группа'  value={UserData.map(el => (el.department))}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
 
                         </div>
                         <div id="aboutDet">
                             <div>
-                                <TextField label="О себе:" multiline rows={3} defaultValue={UserData} fullWidth InputLabelProps={{ shrink: true }} />
+                                <TextField label="О себе:" value={UserData.map(el => (el.aboutMe))}   multiline rows={3} defaultValue={UserData} fullWidth InputLabelProps={{ shrink: true }} />
                             </div>
                         </div>
 

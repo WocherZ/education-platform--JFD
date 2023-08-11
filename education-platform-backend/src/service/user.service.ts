@@ -3,6 +3,7 @@ import UserCourse from "../models/userCourse.model";
 import { RegisterRequest, LoginRequest  } from "../dtos/auth.dto";
 import { UserChangeRequest } from "../dtos/user.dto";
 import bcrypt from 'bcrypt';
+import { Gender } from "../models/user.model";
 // import { use } from "passport";
 
 async function getHashPassword(password?: string) {
@@ -58,6 +59,24 @@ class UserService {
       if (changeDTO.surname) {
         user.surname = changeDTO.surname;
       }
+      if (changeDTO.gender) {
+        user.gender = changeDTO.gender as Gender;
+      }
+      if (changeDTO.age) {
+        user.age = changeDTO.age;
+      }
+      if (changeDTO.phone) {
+        user.phone = changeDTO.phone;
+      }
+      if (changeDTO.organization) {
+        user.organization = changeDTO.organization;
+      }     
+      if (changeDTO.department) {
+        user.department = changeDTO.department;
+      }               
+      if (changeDTO.aboutMe) {
+        user.aboutMe = changeDTO.aboutMe;
+      } 
       await user.save();
       const { name, surname } = user;
       return {userId, name, surname};

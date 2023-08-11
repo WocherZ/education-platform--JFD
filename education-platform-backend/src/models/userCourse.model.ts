@@ -2,7 +2,7 @@ import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement, ForeignKey }
 import User from './user.model';
 import Course from './course.model';
 
-enum Role {
+export enum Role {
   STUDENT = "student",
   TEACHER = "teacher",
 }

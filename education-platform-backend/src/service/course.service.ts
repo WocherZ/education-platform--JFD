@@ -1,6 +1,6 @@
 import Course from "../models/course.model";
-import UserCourse from "../models/userCourse.model";
-import User, { Role } from "../models/user.model";
+import UserCourse, { Role } from "../models/userCourse.model";
+import User from "../models/user.model";
 import { CourseChangeRequest } from "../dtos/course.dto";
 
 class CourseService {
