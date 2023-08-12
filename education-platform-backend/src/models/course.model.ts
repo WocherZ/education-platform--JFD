@@ -2,7 +2,11 @@ import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement,  BelongsToMa
 import User from './user.model';
 import UserCourse from './userCourse.model';
 
-@Table
+@Table({
+  createdAt: false,
+  updatedAt: false,
+})
+
 export default class Course extends Model {
   @PrimaryKey
   @AutoIncrement
@@ -11,6 +15,12 @@ export default class Course extends Model {
 
   @Column(DataType.STRING)
   name!: string;
+
+  @Column(DataType.STRING)
+  picture!: string;
+
+  @Column(DataType.STRING)
+  descriptiongu!: string;
 
   @ForeignKey(()=>User)
   @Column(DataType.INTEGER)

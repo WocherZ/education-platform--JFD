@@ -8,7 +8,11 @@ enum Role {
 }
 
 
-@Table
+@Table({
+  createdAt: false,
+  updatedAt: false,
+})
+
 export default class UserCourse extends Model {
   @PrimaryKey
   @AutoIncrement
