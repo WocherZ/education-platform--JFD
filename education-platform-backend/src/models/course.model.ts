@@ -16,6 +16,12 @@ export default class Course extends Model {
   @Column(DataType.STRING)
   name!: string;
 
+  @Column(DataType.STRING)
+  picture!: string;
+
+  @Column(DataType.STRING)
+  description!: string;
+
   @ForeignKey(()=>User)
   @Column(DataType.INTEGER)
   userId!: number;

@@ -9,6 +9,8 @@ import NotificationPage from "./pages/NotificationPage";
 import ProfilePage from "./pages/ProfilePage";
 import CatalogPage from "./pages/CatalogPage";
 import WebDeveloper from "./pages/WebDeveloper";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
 function App() {
 
@@ -21,9 +23,12 @@ function App() {
       <Route path="/study"  element={ <StudyPage/> }/>
       <Route path="/profile"  element={ <ProfilePage/> }/>
       <Route path="/webcourse"  element={ <WebDeveloper/> }/>
+      <Route path="/signup" element={<SignupPage />}/>
+      <Route path="/login" element={<LoginPage />}/>
 
     </Routes>
   );
 }
 
 export default App;
+
