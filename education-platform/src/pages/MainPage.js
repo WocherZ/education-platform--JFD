@@ -2,6 +2,7 @@ import React  from "react";
 import {Typography, Button } from "@mui/material";
 // import avatar from "../images/Ellipse5.png"
 import AppBar from "../components/AppBar";
+import Main from "../components/main_page/MainTop";
 import { useNavigate } from 'react-router-dom';
 
 const pages = [["/catalog", "Каталог", true],
@@ -34,6 +35,7 @@ function MainPage() {
       userAvatar={null}
       notification={0}
       />
+      <Main></Main>
       <Typography variant="h3">
        HomePage
       </Typography>

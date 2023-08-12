@@ -1,0 +1,12 @@
+.brands {
+    padding-top: 60px;
+}
+
+.brands__list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.brand {
+    padding-left: 50px;
+}
