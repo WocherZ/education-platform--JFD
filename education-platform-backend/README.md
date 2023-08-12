@@ -1,9 +1,11 @@
-Start app
-   
-    pm2 start ./dist/index.js
-Watch log
+# Start app:
 
-    pm2 log index
-Stop app
+DEVELOPMENT:
 
-    pm2 delete index
+    npm run prod 
+
+PRODUCTION:
+
+    npm run build
+    cd ../docker
+    docker compose up -d
