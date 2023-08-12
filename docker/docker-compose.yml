@@ -1,5 +1,18 @@
 version: '3'
 services:
+  api:
+    container_name: api
+    build:
+      context: ../education-platform-backend
+    environment:
+      NODE_ENV: prod      
+    ports:
+      - 3001:3001
+    depends_on:
+      - postgres
+      - redis
+    restart: always
+
   postgres:
     container_name: postgres_container
     image: postgres:12.4
@@ -7,11 +20,11 @@ services:
     volumes:
       - db_volume:/var/lib/postgresql/data
     ports:
-    - "5432:5432"
+      - "5432:5432"
     environment:
-    - POSTGRES_USER=data
-    - POSTGRES_PASSWORD=data
-    - POSTGRES_DB=data
+      - POSTGRES_USER=data
+      - POSTGRES_PASSWORD=data
+      - POSTGRES_DB=data
   pgadmin:
     container_name: pgadmin4_container
     image: dpage/pgadmin4
