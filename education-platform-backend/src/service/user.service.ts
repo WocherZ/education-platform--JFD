@@ -3,7 +3,7 @@ import UserCourse from "../models/userCourse.model";
 import { RegisterRequest, LoginRequest  } from "../dtos/auth.dto";
 import { UserChangeRequest } from "../dtos/user.dto";
 import bcrypt from 'bcrypt';
-import { Gender } from "../models/user.model";
+import {Role,  Gender } from "../models/user.model";
 // import { use } from "passport";
 
 async function getHashPassword(password?: string) {
@@ -25,6 +25,11 @@ class UserService {
       surname: userDTO.surname,
       role : userDTO.role}
     );
+    //Первый созданный пользователь является администратором
+    if (user.id === 1) {
+      user.role = Role.ADMIN;
+      await user.save();
+    }
     return user;
   }
 
@@ -78,8 +83,8 @@ class UserService {
         user.aboutMe = changeDTO.aboutMe;
       } 
       await user.save();
-      const { name, surname } = user;
-      return {userId, name, surname};
+      const { name, surname, gender, age, phone, organization, department, aboutMe } = user;
+      return {userId, name, surname, gender, age, phone, organization, department, aboutMe};
     }
    return user;
   }

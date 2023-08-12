@@ -10,13 +10,13 @@
 			"name": "public",
 			"item": [
 				{
-					"name": "register teacher",
+					"name": "register 1",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"email\" : \"user@mail.ru\",\n\"password\" : \"123\",\n\"name\" : \"Андрей\",\n\"surname\" : \"Кузнецов\",\n\"role\": \"teacher\"\n}",
+							"raw": "{\"email\" : \"user@mail.ru\",\n\"password\" : \"123\",\n\"name\" : \"Андрей\",\n\"surname\" : \"Кузнецов\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,9 +24,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{api.auth.3001}}/register",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.auth}}/register",
 							"host": [
-								"{{api.auth.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.auth}}"
 							],
 							"path": [
 								"register"
@@ -36,13 +36,13 @@
 					"response": []
 				},
 				{
-					"name": "register student",
+					"name": "register 2",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"email\" : \"user2@mail.ru\",\n\"password\" : \"1234\",\n\"name\" : \"Ольга\",\n\"surname\" : \"Петрова\",\n\"role\": \"student\"\n\n}",
+							"raw": "{\"email\" : \"user2@mail.ru\",\n\"password\" : \"1234\",\n\"name\" : \"Ольга\",\n\"surname\" : \"Петрова\"\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -50,9 +50,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{api.auth.3001}}/register",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.auth}}/register",
 							"host": [
-								"{{api.auth.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.auth}}"
 							],
 							"path": [
 								"register"
@@ -62,7 +62,7 @@
 					"response": []
 				},
 				{
-					"name": "login teacher",
+					"name": "login 1",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -76,9 +76,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{api.auth.3001}}/login",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.auth}}/login",
 							"host": [
-								"{{api.auth.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.auth}}"
 							],
 							"path": [
 								"login"
@@ -88,7 +88,7 @@
 					"response": []
 				},
 				{
-					"name": "login student",
+					"name": "login 2",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -102,9 +102,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{api.auth.3001}}/login",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.auth}}/login",
 							"host": [
-								"{{api.auth.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.auth}}"
 							],
 							"path": [
 								"login"
@@ -130,12 +130,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{api.user.3001}}/",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.user}}",
 							"host": [
-								"{{api.user.3001}}"
-							],
-							"path": [
-								""
+								"{{DOMAINE}}{{PORT}}{{api.user}}"
 							]
 						}
 					},
@@ -153,9 +150,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{api.user.3001}}/1",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.user}}/1",
 							"host": [
-								"{{api.user.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.user}}"
 							],
 							"path": [
 								"1"
@@ -177,7 +174,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"John\"\n}",
+							"raw": "{\n    \"age\": \"10\",\n    \"gender\": \"man\",\n    \"phone\": \"+74950010101\",\n    \"organization\": \"school\",\n    \"department\": \"1a\",\n    \"aboutMe\": \"Я администратор сайта JFD\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -185,9 +182,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{api.user.3001}}/1",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.user}}/1",
 							"host": [
-								"{{api.user.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.user}}"
 							],
 							"path": [
 								"1"
@@ -213,9 +210,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{api.course.3001}}",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}",
 							"host": [
-								"{{api.course.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.course}}"
 							]
 						}
 					},
@@ -233,9 +230,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{api.course.3001}}/1",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}/1",
 							"host": [
-								"{{api.course.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.course}}"
 							],
 							"path": [
 								"1"
@@ -256,9 +253,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{api.course.3001}}/search?name=Fullstack",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}/search?name=Fullstack",
 							"host": [
-								"{{api.course.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.course}}"
 							],
 							"path": [
 								"search"
@@ -294,9 +291,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{api.course.3001}}/",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}/",
 							"host": [
-								"{{api.course.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.course}}"
 							],
 							"path": [
 								""
@@ -326,9 +323,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{api.course.3001}}/join",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}/join",
 							"host": [
-								"{{api.course.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.course}}"
 							],
 							"path": [
 								"join"
@@ -358,9 +355,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{api.course.3001}}/1",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}/1",
 							"host": [
-								"{{api.course.3001}}"
+								"{{DOMAINE}}{{PORT}}{{api.course}}"
 							],
 							"path": [
 								"1"
