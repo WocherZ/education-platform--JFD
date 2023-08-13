@@ -15,6 +15,7 @@ import { Avatar, Divider} from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import { logoutUserAction } from "../store/userReducer"
 
 
 // path, pageName, no need Auth
@@ -64,7 +65,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function AppBar( {userName, userAvatar, notification }) {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const isAuth = useSelector(state => state.user.isAuth);
   console.log(isAuth);
   let currentPage = window.location.pathname;
@@ -97,6 +98,16 @@ export default function AppBar( {userName, userAvatar, notification }) {
       }
   };
 
+  const handleMenuCloseLogout = (href=null) => {
+    setAnchorEl(null);
+    if (href) 
+      {
+        dispatch(logoutUserAction({userId: 0}));
+        navigate(href);
+      }
+  };  
+
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -125,7 +136,7 @@ export default function AppBar( {userName, userAvatar, notification }) {
         </MenuItem>
       }
       <Divider/>
-      <MenuItem onClick={handleMenuClose.bind(this, "/")}>Выйти
+      <MenuItem onClick={handleMenuCloseLogout.bind(this, "/")}>Выйти
       </MenuItem>
     </Menu>
   );

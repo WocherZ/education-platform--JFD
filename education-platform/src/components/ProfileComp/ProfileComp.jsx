@@ -28,11 +28,13 @@ export default function ProfileComp() {
 
     useEffect(() =>{ 
         const getUserData = async () => {
-            const response = await fetch(`http://localhost:3001/api/user/${userId}`,{headers:
-             {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU'}});
-            const  data = await response.json();
-            console.log(data.result);           
-            setUserData(data.result);
+            if (isAuth) {
+                const response = await fetch(`http://localhost:3001/api/user/${userId}`,{headers:
+                {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU'}});
+                const  data = await response.json();
+                console.log(data.result);           
+                setUserData(data.result);
+            }
         };
         getUserData();
     },[])
