@@ -22,7 +22,7 @@ export default function ProfileComp() {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const [UserData, setUserData] = React.useState(
-         {email: '', role: '', name: '', surname: '', gender: 'man', phone: '', organization:'', department: '', aboutMe: ''}    );
+         {email: '', name: '', surname: '', gender: 'man', phone: '', organization:'', department: '', aboutMe: ''}    );
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
