@@ -1,8 +1,11 @@
 import { loginUserAction } from "../store/userReducer";
 
+const domaine = "http://localhost";
+const port = 3001;
+
 export const fetchLoginUser = ({email, password}) => {
   return function(dispatch) {
-    fetch(`http://localhost:3002/api/auth/login`,
+    fetch(`${domaine}:${port}/api/auth/login`,
       {method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -16,7 +19,7 @@ export const fetchLoginUser = ({email, password}) => {
 }
 
 export const fetchRegisterUser = ({email, password}) => {
-    fetch(`http://localhost:3002/api/auth/register`,
+    fetch(`${domaine}:${port}/api/auth/register`,
       {method: "POST",
       headers: {
         'Accept': 'application/json',
