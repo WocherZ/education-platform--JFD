@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import reportWebVitals from './reportWebVitals';
+import { store} from './store';
+import { Provider } from "react-redux";
 
 const theme = createTheme(
   {
@@ -20,12 +22,15 @@ const theme = createTheme(
   }
 )
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider theme={theme}>
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </BrowserRouter>
     </React.StrictMode>
   </ThemeProvider>

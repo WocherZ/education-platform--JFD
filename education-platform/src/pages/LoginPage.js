@@ -22,6 +22,8 @@ import LockIcon from '@mui/icons-material/Lock';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 // Email Validation
 const isEmail = (email) =>
@@ -29,6 +31,14 @@ const isEmail = (email) =>
 
 
 const LoginPage=()=>{
+    //Redux
+    const dispatch = useDispatch();
+    const isAuth = useSelector(state => state.user.isAuth);
+    const userLogin = (userId) => {
+        dispatch({type: "LOGIN", payload: userId})
+    }
+    const navigate = useNavigate();
+
     const [showPassword, setShowPassword] = React.useState(false);
 
     //Inputs
@@ -105,6 +115,8 @@ const LoginPage=()=>{
   
       //Show Successfull Submittion
       setSuccess("Форма введена успешно");
+      userLogin(1);
+      navigate('/profile');
     };
 
     const paperStyle={padding: "1rem", height: "100%", width: "20rem", margin: "1rem auto"}

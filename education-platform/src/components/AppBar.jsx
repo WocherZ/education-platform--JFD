@@ -14,6 +14,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Avatar, Divider} from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+
 
 // path, pageName, no need Auth
 const pages = [["/catalog", "Каталог", true],
@@ -61,8 +63,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function AppBar( {isAuth, userName, userAvatar, notification }) {
-  
+export default function AppBar( {userName, userAvatar, notification }) {
+  // const dispatch = useDispatch();
+  const isAuth = useSelector(state => state.user.isAuth);
+  console.log(isAuth);
   let currentPage = window.location.pathname;
   const navigate = useNavigate();
 
@@ -243,6 +247,7 @@ export default function AppBar( {isAuth, userName, userAvatar, notification }) {
               color="inherit"
               aria-controls={menuId}
               aria-haspopup="true"
+              onClick={navigate.bind(this, '/signup')}
               // onClick={handleProfileMenuOpen}
             >
                 <LoginIcon />

@@ -4,10 +4,13 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import avatar from "./../../images/Ellipse5.png";
 import "./ProfileComp.css";
-
+import { useSelector } from "react-redux";
 
 export default function ProfileComp() {
-
+    //Redux
+    // const dispatch = useDispatch();
+    const isAuth = useSelector(state => state.user.isAuth);
+    const userId = useSelector(state => state.user.userId);
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -25,7 +28,7 @@ export default function ProfileComp() {
 
     useEffect(() =>{ 
         const getUserData = async () => {
-            const response = await fetch('http://localhost:3001/api/user/?id=1',{headers:
+            const response = await fetch(`http://localhost:3001/api/user/${userId}`,{headers:
              {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU'}});
             const  data = await response.json();
             console.log(data.result);           
@@ -75,7 +78,7 @@ export default function ProfileComp() {
 
                     <div id="stdDet">
                         <div id="leftDet">
-                            <div><TextField label='Фамилия пользователя' value={UserData.map(el => (el.surname))} //onChange={event => setUserData(event.target.value)} 
+                            <div><TextField label='Фамилия пользователя' value={UserData.surname} //onChange={event => setUserData(event.target.value)} 
                             variants='outlined'  InputLabelProps={{ shrink: true }} /></div>
                             <div>
                                 <FormControl>
@@ -87,25 +90,25 @@ export default function ProfileComp() {
                                 </FormControl>
                             </div>
                             <div>
-                                <TextField label="Возраст"  value={UserData.map(el => (el.age))}  type="number" InputLabelProps={{ shrink: true, }} />
+                                <TextField label="Возраст"  value={UserData.age}  type="number" InputLabelProps={{ shrink: true, }} />
                             </div>
                         </div>
                         <div id="rightDet">
-                            <div><TextField label='Имя пользователя' value={UserData.map(el => (el.name))} variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label='Электронная почта' value={UserData.map(el => (el.email))}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label="Телефон" type="text"  value={UserData.map(el => (el.phone))}  InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /></div>
+                            <div><TextField label='Имя пользователя' value={UserData.name} variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Электронная почта' value={UserData.email}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label="Телефон" type="text"  value={UserData.phone}  InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /></div>
                         </div>
 
                     </div>
                     <div id="compDet">
                         <div id="orgDet">
-                            <div><TextField label='Организация/Учебное заведение'  value={UserData.map(el => (el.organization))}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label='Подразделение/Группа'  value={UserData.map(el => (el.department))}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Организация/Учебное заведение'  value={UserData.organization}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Подразделение/Группа'  value={UserData.department}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
 
                         </div>
                         <div id="aboutDet">
                             <div>
-                                <TextField label="О себе:" value={UserData.map(el => (el.aboutMe))}   multiline rows={3} defaultValue={UserData} fullWidth InputLabelProps={{ shrink: true }} />
+                                <TextField label="О себе:" value={UserData.aboutMe}   multiline rows={3} defaultValue={UserData} fullWidth InputLabelProps={{ shrink: true }} />
                             </div>
                         </div>
 
