@@ -13,9 +13,10 @@ export default function ProfileComp() {
     const userId = useSelector(state => state.user.userId);
     const token = useSelector(state => state.user.token);
     const port = 3001;
- // const isAuth = true;
- // const userId = 1;
- // const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU';
+    const domain = 'localhost';
+  //const isAuth = true;
+  //const userId = 1;
+  //const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU';
 
     console.log("ProfileComp" , {isAuth,userId, token});
     const [showPassword, setShowPassword] = React.useState(false);
@@ -31,7 +32,7 @@ export default function ProfileComp() {
     
     const handleSubmit = (event) => {
         event.preventDefault();     
-        fetch(`http://localhost:${port}/api/user/${userId}`,
+        fetch(`http://${domain}:${port}/api/user/${userId}`,
         {method: 'PUT',  
       //  mode: 'no-cors', 
         headers:
@@ -54,7 +55,7 @@ export default function ProfileComp() {
     useEffect(() =>{ 
         const getUserData = async () => {
             if (isAuth) {
-                const response = await fetch(`http://localhost:${port}/api/user/${userId}`,
+                const response = await fetch(`http://${domain}:${port}/api/user/${userId}`,
                 {headers:
                 {'Authorization': token}});
                 const  data = await response.json();
