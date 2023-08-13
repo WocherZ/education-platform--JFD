@@ -40,8 +40,8 @@ class Controller {
   async post(req : Request, res: Response, next: NextFunction) {
     try {
       const user = req.user as IUser;
-      const { name } = req.body;
-      const result = await course.create(name, user.userId);      
+      const { name, description } = req.body;
+      const result = await course.create(name, user.userId, description);      
       if (result) {
         res.status(200).json(result);
       } else {

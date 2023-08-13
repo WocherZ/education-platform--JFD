@@ -4,14 +4,15 @@ import User from "../models/user.model";
 import { CourseChangeRequest } from "../dtos/course.dto";
 
 class CourseService {
-  async create(name: string, authorId: number){
+  async create(name: string, authorId: number, description: string){
     const courseExists = await Course.findOne({where: {name: name}});
     if (courseExists) {
       return undefined;
     }
     const course = await Course.create(
       {name: name,
-      userId: authorId
+      userId: authorId,
+      description: description
       }
     );
     await UserCourse.create(
@@ -57,6 +58,9 @@ class CourseService {
     if (course) {
       if (changeDTO.name) {
         course.name = changeDTO.name;
+      }
+      if (changeDTO.description) {
+        course.description = changeDTO.description.slice(0, 255);  // исключить переполнение
       }
       await course.save();
       const { name } = course;

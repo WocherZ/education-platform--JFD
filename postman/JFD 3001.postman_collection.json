@@ -279,7 +279,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}/search?name=Fullstack",
+							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}/search?name=Веб-разработка",
 							"host": [
 								"{{DOMAINE}}{{PORT}}{{api.course}}"
 							],
@@ -289,7 +289,7 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "Fullstack"
+									"value": "Веб-разработка"
 								}
 							]
 						}
@@ -309,7 +309,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"JS\"\n}",
+							"raw": "{\n    \"name\": \"Веб-разработка 3\",\n    \"description\": \"Вы изучите HTML, CSS, языки программирования JavaScript, TypeScript, библиотеку React. На курсе будут сеансы парного программирования, лайвкодинг и хакатон.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

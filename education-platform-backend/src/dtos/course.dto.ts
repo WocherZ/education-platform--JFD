@@ -1,3 +1,4 @@
 export interface CourseChangeRequest {
-  name: string
+  name?: string
+  description?: string
 }
