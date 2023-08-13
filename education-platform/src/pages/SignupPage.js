@@ -23,6 +23,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
+import { fetchRegisterUser } from "../asyncAction/user";
 
 
 
@@ -112,6 +113,7 @@ const SignupPage=()=>{
   
       //Show Successfull Submittion
       setSuccess("Форма введена успешно");
+      fetchRegisterUser(emailInput, passwordInput);
     };
     
     const paperStyle={padding: "1rem", height: "100%", width: "20rem", margin: "1rem auto"}

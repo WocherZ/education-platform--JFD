@@ -88,6 +88,32 @@
 					"response": []
 				},
 				{
+					"name": "login 1 Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\" : \"user@mail.ru\",\n\"password\" : \"123\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAINE}}{{PORT}}{{api.auth}}/login",
+							"host": [
+								"{{DOMAINE}}{{PORT}}{{api.auth}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "login 2",
 					"request": {
 						"method": "POST",

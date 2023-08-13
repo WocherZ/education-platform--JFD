@@ -18,8 +18,9 @@ export const fetchLoginUser = ({email, password}) => {
   }
 }
 
-export const fetchRegisterUser = ({email, password}) => {
-    fetch(`${domaine}:${port}/api/auth/register`,
+export const fetchRegisterUser = (email, password) => {
+  // console.log("fetchRegisterUser", email, password );  
+  fetch(`${domaine}:${port}/api/auth/register`,
       {method: "POST",
       headers: {
         'Accept': 'application/json',
