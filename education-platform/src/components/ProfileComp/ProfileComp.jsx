@@ -12,6 +12,10 @@ export default function ProfileComp() {
     const isAuth = useSelector(state => state.user.isAuth);
     const userId = useSelector(state => state.user.userId);
     const token = useSelector(state => state.user.token);
+ // const isAuth = true;
+ // const userId = 1;
+ // const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU';
+
     console.log("ProfileComp" , {isAuth,userId, token});
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -26,11 +30,11 @@ export default function ProfileComp() {
     
     const handleSubmit = (event) => {
         event.preventDefault();     
-        fetch('http://localhost:3002/api/user/1',
+        fetch(`http://localhost:3001/api/user/${userId}`,
         {method: 'PUT',  
       //  mode: 'no-cors', 
         headers:
-        {"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU',
+        {'Authorization': token,
         "Content-Type": 'application/json',
         'Accept': 'application/json'      
        /* "Origin":"http://localhost:3000",
@@ -49,7 +53,8 @@ export default function ProfileComp() {
     useEffect(() =>{ 
         const getUserData = async () => {
             if (isAuth) {
-                const response = await fetch(`http://localhost:3001/api/user/${userId}`,{headers:
+                const response = await fetch(`http://localhost:3001/api/user/${userId}`,
+                {headers:
                 {'Authorization': token}});
                 const  data = await response.json();
                 console.log("data.result", data.result);           
