@@ -12,6 +12,7 @@ export default function ProfileComp() {
     const isAuth = useSelector(state => state.user.isAuth);
     const userId = useSelector(state => state.user.userId);
     const token = useSelector(state => state.user.token);
+    const port = 3001;
  // const isAuth = true;
  // const userId = 1;
  // const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU';
@@ -30,7 +31,7 @@ export default function ProfileComp() {
     
     const handleSubmit = (event) => {
         event.preventDefault();     
-        fetch(`http://localhost:3001/api/user/${userId}`,
+        fetch(`http://localhost:${port}/api/user/${userId}`,
         {method: 'PUT',  
       //  mode: 'no-cors', 
         headers:
@@ -53,7 +54,7 @@ export default function ProfileComp() {
     useEffect(() =>{ 
         const getUserData = async () => {
             if (isAuth) {
-                const response = await fetch(`http://localhost:3001/api/user/${userId}`,
+                const response = await fetch(`http://localhost:${port}/api/user/${userId}`,
                 {headers:
                 {'Authorization': token}});
                 const  data = await response.json();
@@ -93,7 +94,7 @@ export default function ProfileComp() {
                                 <Button id="saveBtn" type="submit" variant="contained">Сохранить</Button>
                             </div>
                             <div>
-                                <Button id="CancelBtn" variant="text">Отменить</Button>
+                                <Button id="CancelBtn" onClick={() => window.location.reload(false)} variant="text">Отменить</Button>
                             </div>
                         </div>
                     </div>
