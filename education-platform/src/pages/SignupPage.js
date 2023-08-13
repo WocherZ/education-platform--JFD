@@ -121,7 +121,7 @@ const SignupPage=()=>{
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'> 
                     <Avatar style={avatarStyle}><AddCircleOutlineIcon></AddCircleOutlineIcon></Avatar>
-                    <h2>Зарегестрироваться</h2>
+                    <h2>Зарегистрироваться</h2>
                 </Grid>
                 <Grid container direction={"column"} spacing={1}>
                     <Grid item>
@@ -184,11 +184,11 @@ const SignupPage=()=>{
                             startIcon={<LoginIcon />}
                             onClick={handleSubmit}
                         >
-                            Зарегестрироваться
+                            Зарегистрироваться
                         </Button>
                     </Grid>
                     <Grid item>
-                        <Typography>Уже зарегестрированы? <Link href="/login">Войти</Link></Typography>
+                        <Typography>Уже зарегистрированы? <Link href="/login">Войти</Link></Typography>
                     </Grid>
                 </Grid>
             </Paper>
