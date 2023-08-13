@@ -7,7 +7,7 @@ import "./ProfileComp.css";
 import { useSelector } from "react-redux";
 
 export default function ProfileComp() {
-    //Redux
+	//Redux
     // const dispatch = useDispatch();
     const isAuth = useSelector(state => state.user.isAuth);
     const userId = useSelector(state => state.user.userId);
@@ -15,17 +15,36 @@ export default function ProfileComp() {
     console.log("ProfileComp" , {isAuth,userId, token});
     const [showPassword, setShowPassword] = React.useState(false);
 
-    const [UserData, setUserData] = React.useState([{
-        id: 0, email: '1', role: '2', name: '3', surname: '4'
-     }]);
+    const [UserData, setUserData] = React.useState(
+         {email: '', role: '', name: '', surname: '', gender: 'man', phone: '', organization:'', department: '', aboutMe: ''}    );
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-
-   // data = null;
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();     
+        fetch('http://localhost:3002/api/user/1',
+        {method: 'PUT',  
+      //  mode: 'no-cors', 
+        headers:
+        {"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU',
+        "Content-Type": 'application/json',
+        'Accept': 'application/json'      
+       /* "Origin":"http://localhost:3000",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods":"PUT",
+    "Access-Control-Allow-Headers":"Content-Type,Authorization,Origin"   */},    
+        body: JSON.stringify(UserData)        
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            setUserData(result.result);
+          });
+      };
 
     useEffect(() =>{ 
         const getUserData = async () => {
@@ -40,15 +59,10 @@ export default function ProfileComp() {
         getUserData();
     },[isAuth, userId, token])
   console.log(UserData); 
-  // console.log(UserData.surname);   
- 
- //console.log(UserData.map(el => (el.surname)));
-
  console.log(UserData.name);
 
-
     return (
-        <form>
+        <form   onSubmit={handleSubmit}>
         <div>
             <div id="setBack">
                 <div id="setMain">
@@ -71,7 +85,7 @@ export default function ProfileComp() {
                         </div>
                         <div id="buttonArea">
                             <div >
-                                <Button id="saveBtn" variant="contained">Сохранить</Button>
+                                <Button id="saveBtn" type="submit" variant="contained">Сохранить</Button>
                             </div>
                             <div>
                                 <Button id="CancelBtn" variant="text">Отменить</Button>
@@ -81,37 +95,56 @@ export default function ProfileComp() {
 
                     <div id="stdDet">
                         <div id="leftDet">
-                            <div><TextField label='Фамилия пользователя' value={UserData.surname} //onChange={event => setUserData(event.target.value)} 
+                            <div><TextField label='Фамилия пользователя' value={UserData.surname}                         
+                           onChange={event => setUserData({...UserData, surname: event.target.value})} name="surname"
                             variants='outlined'  InputLabelProps={{ shrink: true }} /></div>
                             <div>
                                 <FormControl>
                                     <FormLabel>Пол</FormLabel>
-                                    <RadioGroup>
-                                        <FormControlLabel value="Мужской" control={<Radio />} label="Мужской" />
-                                        <FormControlLabel value="Женский" control={<Radio />} label="Женский" />
+                                    <RadioGroup
+                                       name="gender"
+                                       value={UserData.gender}
+                                       onChange={event => setUserData({...UserData, gender: event.target.value})}  >
+                                        <FormControlLabel value="man" control={<Radio />} label="Мужской" />
+                                        <FormControlLabel value="woman" control={<Radio />} label="Женский" />
                                     </RadioGroup>
                                 </FormControl>
                             </div>
                             <div>
-                                <TextField label="Возраст"  value={UserData.age}  type="number" InputLabelProps={{ shrink: true, }} />
+                                <TextField label="Возраст" type="number" 
+                                value={UserData.age} 
+                                onChange={event => setUserData({...UserData, age: event.target.value})} name="age"
+                                InputLabelProps={{ shrink: true, }} />
                             </div>
                         </div>
                         <div id="rightDet">
-                            <div><TextField label='Имя пользователя' value={UserData.name} variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label='Электронная почта' value={UserData.email}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label="Телефон" type="text"  value={UserData.phone}  InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /></div>
+                            <div><TextField label='Имя пользователя' value={UserData.name} 
+                             onChange={event => setUserData({...UserData, name: event.target.value})} name="name"
+                             variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Электронная почта'  value={UserData.email} 
+                             onChange={event => setUserData({...UserData, email: event.target.value})} name="email"
+                              variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label="Телефон" type="text" value={UserData.phone}
+                            onChange={event => setUserData({...UserData, phone: event.target.value})} name="phone"
+                            InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /></div>
                         </div>
 
                     </div>
                     <div id="compDet">
                         <div id="orgDet">
-                            <div><TextField label='Организация/Учебное заведение'  value={UserData.organization}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
-                            <div><TextField label='Подразделение/Группа'  value={UserData.department}  variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Организация/Учебное заведение' value={UserData.organization}
+                            onChange={event => setUserData({...UserData, organization: event.target.value})} name="organization"
+                             variants='outlined' InputLabelProps={{ shrink: true }} /></div>
+                            <div><TextField label='Подразделение/Группа' value={UserData.department}
+                            onChange={event => setUserData({...UserData, department: event.target.value})} name="department"
+                             variants='outlined' InputLabelProps={{ shrink: true }} /></div>
 
                         </div>
                         <div id="aboutDet">
                             <div>
-                                <TextField label="О себе:" value={UserData.aboutMe}   multiline rows={3} defaultValue={UserData} fullWidth InputLabelProps={{ shrink: true }} />
+                                <TextField label="О себе:" multiline rows={3} value={UserData.aboutMe}
+                                onChange={event => setUserData({...UserData, aboutMe: event.target.value})} name="aboutMe"
+                                fullWidth InputLabelProps={{ shrink: true }} />
                             </div>
                         </div>
 
