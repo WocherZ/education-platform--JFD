@@ -3,6 +3,9 @@ import AppBar from "../components/AppBar";
 import '../styles/courses/style.css'
 import account from '../images/courses/account.png'
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetchCourse } from "../asyncAction/course";
 
 import {
     List,
@@ -15,7 +18,15 @@ import { SendIcon, DraftsIcon, StarBorder, ExpandLess, ExpandMore, } from '@mui/
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 
 export default function WebDeveloper() {
-    const courseId = 1
+    const isAuth = useSelector(state => state.user.isAuth);
+    console.log("isAuth", isAuth);
+    const userId = useSelector(state => state.user.userId);
+    const token = useSelector(state => state.user.token);
+
+    const params = useParams();
+    const courseId = params.id;
+    // console.log("params", params);
+    const [course, setCourse] = React.useState({id: 0, name: '', picture: null, description: null, userId: 0});
     const [modules, setModules] = React.useState([]);
     const [open, setOpen] = React.useState(false);
     const [teacher, setTeacher] = React.useState([]);
@@ -23,6 +34,18 @@ export default function WebDeveloper() {
     const handleClick = () => {
         setOpen(!open);
     };
+
+    useEffect(() => {
+        const getCourse = async () => {
+            if (isAuth && courseId > 0){
+            const data = await fetchCourse(courseId, token)
+            console.log("getCourse", data.result);
+            setCourse(data.result);
+            };
+        }
+            getCourse();
+
+    }, [courseId, isAuth, token])
 
     useEffect(() => {
         const getModules = async () => {

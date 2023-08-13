@@ -12,7 +12,7 @@ function CatalogPage() {
   useEffect(() => {
       const getData = async () => {
           const response = await fetch(
-              `${domaine}:${port}api/course/`, {headers:
+              `${domaine}:${port}/api/course/`, {headers:
               {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU'}});
         
           const data = await response.json();

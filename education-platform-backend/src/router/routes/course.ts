@@ -5,9 +5,9 @@ import { makePostRequestLimiter } from "../../middlewares/ratelimit.middleware";
 
 const router: Router = Router(); 
 
-router.get('/search?:name', requireJwtAuth, controller.getByName);
-router.get('/:id', requireJwtAuth, controller.getById);
-router.get('/', requireJwtAuth, controller.getAll);
+router.get('/search?:name', controller.getByName);
+router.get('/:id',  controller.getById);
+router.get('/',  controller.getAll);
 router.post('/', requireJwtAuth, makePostRequestLimiter,  controller.post);
 router.put('/:id', requireJwtAuth, controller.changeById);
 router.post('/join', requireJwtAuth,  controller.join);
