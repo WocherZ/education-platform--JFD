@@ -1,14 +1,13 @@
 const domaine = "http://localhost";
 const port = 3001;
 
-export  async function fetchCourse(id, token){
+export  async function fetchCourse(id){
     let result = undefined;
     const response = await fetch(
         `${domaine}:${port}/api/course/${id}`,
          {headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          "Authorization": token
+          'Content-Type': 'application/json'
         }, }
     );
     if (response.ok) { // если HTTP-статус в диапазоне 200-299

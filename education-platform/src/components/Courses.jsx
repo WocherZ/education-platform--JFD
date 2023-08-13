@@ -8,9 +8,15 @@ import {
     CardContent,
     Card,
 } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
 
 function Courses({course}) {
-
+    const navigate = useNavigate();
+    const handleOpenCourse = () => {
+        if (course.id > 0) 
+          {navigate(`/course/${course.id}`);
+          }
+      };
 
   return (
     <div>
@@ -32,7 +38,7 @@ function Courses({course}) {
                     </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={handleOpenCourse}>
                 ПОДРОБНЕЕ
                 </Button>
             </CardActions>

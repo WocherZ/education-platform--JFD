@@ -67,7 +67,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function AppBar( {userName, userAvatar, notification }) {
   const dispatch = useDispatch();
   const isAuth = useSelector(state => state.user.isAuth);
-  console.log(isAuth);
+  // console.log(isAuth);
   let currentPage = window.location.pathname;
   const navigate = useNavigate();
 

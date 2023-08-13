@@ -3,9 +3,10 @@ import AppBar from "../components/AppBar";
 import '../styles/courses/style.css'
 import account from '../images/courses/account.png'
 import React, { useState, useEffect } from 'react';
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCourse } from "../asyncAction/course";
+import { useNavigate } from 'react-router-dom';
 
 import {
     List,
@@ -18,10 +19,10 @@ import { SendIcon, DraftsIcon, StarBorder, ExpandLess, ExpandMore, } from '@mui/
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 
 export default function WebDeveloper() {
-    const isAuth = useSelector(state => state.user.isAuth);
-    console.log("isAuth", isAuth);
-    const userId = useSelector(state => state.user.userId);
-    const token = useSelector(state => state.user.token);
+    // const isAuth = useSelector(state => state.user.isAuth);
+    // console.log("isAuth", isAuth);
+    // const userId = useSelector(state => state.user.userId);
+    // const token = useSelector(state => state.user.token);
 
     const params = useParams();
     const courseId = params.id;
@@ -37,15 +38,15 @@ export default function WebDeveloper() {
 
     useEffect(() => {
         const getCourse = async () => {
-            if (isAuth && courseId > 0){
-            const data = await fetchCourse(courseId, token)
-            console.log("getCourse", data.result);
+            if (courseId > 0){
+            const data = await fetchCourse(courseId)
+            // console.log("getCourse", data.result);
             setCourse(data.result);
             };
         }
             getCourse();
 
-    }, [courseId, isAuth, token])
+    }, [courseId])
 
     useEffect(() => {
         const getModules = async () => {
@@ -54,11 +55,11 @@ export default function WebDeveloper() {
             }
             );
             const data = await response.json();
-            console.log(data.result);
+            // console.log(data.result);
             setModules(data.result);
         };
         getModules();
-    }, [])
+    }, [courseId])
 
     useEffect(() => {
         const getTeacher = async () => {
@@ -67,7 +68,7 @@ export default function WebDeveloper() {
             }
             );
             const data = await response.json();
-            console.log(data.result);
+            // console.log(data.result);
             setTeacher(data.result);
         };
         getTeacher();
@@ -76,23 +77,22 @@ export default function WebDeveloper() {
     return (
         <div>
             <AppBar />
-            <h1>Веб-разработка</h1>
+            <h1>{course.name}</h1>
             <div id="description">
-                <p>Вы изучите HTML, CSS, языки программирования JavaScript, TypeScript, библиотеку React.
-                    На курсе будут сеансы парного программирования, лайвкодинг и хакатон.</p>
+                <p>{course.description}</p>
             </div>
             <div id="teacher">
                 <div>
                     <img src={account} />
                 </div>
-                <p>Курс читает:
+                <div>Курс читает:
                     {
                         teacher.map(el => (
-                            <p><b>{el}</b></p>
+                            <p key={el}><b>{el}</b></p>
                         )
                         )
                     }
-                </p>
+                </div>
             </div>
             <div id="modules-menu">
                 <ListItemButton onClick={handleClick}>
@@ -104,7 +104,7 @@ export default function WebDeveloper() {
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {modules.map(el => (
-                            <ListItem divider sx={{
+                            <ListItem key={el.name} divider sx={{
                                 "&:hover": {
                                     borderColor: "#535557",
                                 }
@@ -112,7 +112,7 @@ export default function WebDeveloper() {
                                 <ListItemIcon>
                                     <StarBorder />
                                 </ListItemIcon>
-                                <a href='' key={el.name}>{el.name}</a>
+                                <a href='#' >{el.name}</a>
                             </ListItem>
                         ))}
                     </List>

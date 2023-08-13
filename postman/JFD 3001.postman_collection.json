@@ -361,6 +361,38 @@
 					"response": []
 				},
 				{
+					"name": "join teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6InRlYWNoZXIiLCJpYXQiOjE2OTA2MTgzODh9.AzVGfdFqULWrHttr2B599-9VPayCwSzHB4dE708eTqk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"courseId\": \"1\",\n    \"userId\" : \"2\",\n    \"role\": \"teacher\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}/join",
+							"host": [
+								"{{DOMAINE}}{{PORT}}{{api.course}}"
+							],
+							"path": [
+								"join"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "change by ID",
 					"request": {
 						"method": "PUT",
@@ -373,7 +405,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Fullstack\"\n}",
+							"raw": "{\n    \"name\": \"Fullstack\",\n    \"description\": \"Вы изучите HTML, CSS, языки программирования JavaScript, TypeScript, библиотеку React. На курсе будут сеансы парного программирования, лайвкодинг и хакатон.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -384,6 +416,43 @@
 							"raw": "{{DOMAINE}}{{PORT}}{{api.course}}/1",
 							"host": [
 								"{{DOMAINE}}{{PORT}}{{api.course}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "modules",
+			"item": [
+				{
+					"name": "add new",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2OTA0Nzg4Mjh9.1Z9XvZbg8yNPaCjY-LLUJs3eAe1dEjYDPqS9CZ2cqeM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"React\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAINE}}{{PORT}}{{api.modules.course}}/1",
+							"host": [
+								"{{DOMAINE}}{{PORT}}{{api.modules.course}}"
 							],
 							"path": [
 								"1"
