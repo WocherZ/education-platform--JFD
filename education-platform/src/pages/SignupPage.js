@@ -7,7 +7,7 @@ import {
     Button, 
     Typography, 
     Link, 
-    FormLabel, 
+    Box,
     InputAdornment,
     InputLabel,
     IconButton,
@@ -24,6 +24,9 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import { fetchRegisterUser } from "../asyncAction/user";
+import { useNavigate } from 'react-router-dom';
+
+// Email Validation
 
 
 
@@ -35,6 +38,8 @@ const isEmail = (email) =>
 
 
 const SignupPage=()=>{
+
+    const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -112,90 +117,99 @@ const SignupPage=()=>{
       console.log("Password : " + passwordInput);
   
       //Show Successfull Submittion
-      setSuccess("Форма введена успешно");
       fetchRegisterUser(emailInput, passwordInput);
+      navigate('/profile');
+      setSuccess("Форма введена успешно");
+      
     };
     
     const paperStyle={padding: "1rem", height: "100%", width: "20rem", margin: "1rem auto"}
     const avatarStyle={backgroundColor: '#1bbd7e'}
     return(
-        <Grid> 
-            <Paper elevation={10} style={paperStyle}>
-                <Grid align='center'> 
-                    <Avatar style={avatarStyle}><AddCircleOutlineIcon></AddCircleOutlineIcon></Avatar>
-                    <h2>Зарегестрироваться</h2>
-                </Grid>
-                <Grid container direction={"column"} spacing={1}>
-                    <Grid item>
-                        <TextField 
-                            label="Email" 
-                            placeholder="Введите почту" 
-                            variant="outlined" 
-                            fullWidth 
-                            required
-                            error={emailError}
-                            id="standard-basic"
-                            value={emailInput}
-                            InputProps={{}}
-                            onBlur={handleEmail}
-                            onChange={(event) => {
-                              setEmailInput(event.target.value);
-                            }}
-                   
-                        />
-                    </Grid>
-                    <Grid item>
-                        <FormControl sx={{ width: "100%" }} variant="outlined">
-                            <InputLabel
-                                error={passwordError}
-                                htmlFor="standard-adornment-password"
-                            >
-                                Пароль
-                            </InputLabel>
-                            <Input
-                                variant="outlined"
-                                padding ='1rem'
-                                error={passwordError}
-                                onBlur={handlePassword}
-                                id="standard-adornment-password"
-                                type={showPassword ? "text" : "password"}
-                                onChange={(event) => {
-                                setPasswordInput(event.target.value);
-                                }}
-                                value={passwordInput}
-                                endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                    >
-                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                                }
-                            />
-                        </FormControl>
-                    </Grid>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+      >
+          <Grid> 
+              <Paper elevation={10} style={paperStyle}>
+                  <Grid align='center'> 
+                      <Avatar style={avatarStyle}><AddCircleOutlineIcon></AddCircleOutlineIcon></Avatar>
+                      <h2>Зарегистрироваться</h2>
+                  </Grid>
+                  <Grid container direction={"column"} justify = "center" spacing={3}>
+                      <Grid item>
+                          <TextField 
+                              label="Email" 
+                              placeholder="Введите почту" 
+                              variant="outlined" 
+                              fullWidth 
+                              required
+                              error={emailError}
+                              id="standard-basic"
+                              value={emailInput}
+                              InputProps={{}}
+                              onBlur={handleEmail}
+                              onChange={(event) => {
+                                setEmailInput(event.target.value);
+                              }}
+                    
+                          />
+                      </Grid>
+                      <Grid item>
+                          <FormControl sx={{ width: "100%" }} variant="outlined">
+                              <InputLabel
+                                  error={passwordError}
+                                  htmlFor="standard-adornment-password"
+                              >
+                                  Пароль
+                              </InputLabel>
+                              <Input
+                                  variant="outlined"
+                                  padding ='1rem'
+                                  error={passwordError}
+                                  onBlur={handlePassword}
+                                  id="standard-adornment-password"
+                                  type={showPassword ? "text" : "password"}
+                                  onChange={(event) => {
+                                  setPasswordInput(event.target.value);
+                                  }}
+                                  value={passwordInput}
+                                  endAdornment={
+                                  <InputAdornment position="end">
+                                      <IconButton
+                                      aria-label="toggle password visibility"
+                                      onClick={handleClickShowPassword}
+                                      onMouseDown={handleMouseDownPassword}
+                                      >
+                                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                                      </IconButton>
+                                  </InputAdornment>
+                                  }
+                              />
+                          </FormControl>
+                      </Grid>
+                    
+                      <Grid item>
+                          <Button 
+                              type="submit" 
+                              variant="contained" 
+                              fullWidth
+                              startIcon={<LoginIcon />}
+                              onClick={handleSubmit}
+                          >
+                              Зарегистрироваться
+                          </Button>
+                      </Grid>
+                      <Grid item>
+                          <Typography>Уже зарегистрированы? <Link href="/login">Войти</Link></Typography>
+                      </Grid>
+                  </Grid>
+              </Paper>
+          </Grid>
+      </Box>
                   
-                    <Grid item>
-                        <Button 
-                            type="submit" 
-                            variant="contained" 
-                            fullWidth
-                            startIcon={<LoginIcon />}
-                            onClick={handleSubmit}
-                        >
-                            Зарегестрироваться
-                        </Button>
-                    </Grid>
-                    <Grid item>
-                        <Typography>Уже зарегестрированы? <Link href="/login">Войти</Link></Typography>
-                    </Grid>
-                </Grid>
-            </Paper>
-        </Grid>
-                
     )
 }
 

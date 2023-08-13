@@ -16,6 +16,7 @@ import {
     FormControl,
     Stack,
     Alert,
+    Box,
     
 } from "@mui/material";
 import LockIcon from '@mui/icons-material/Lock';
@@ -25,6 +26,8 @@ import LoginIcon from "@mui/icons-material/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { fetchLoginUser } from "../asyncAction/user";
+
+
 // Email Validation
 const isEmail = (email) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
@@ -122,126 +125,133 @@ const LoginPage=()=>{
     const paperStyle={padding: "1rem", height: "100%", width: "20rem", margin: "1rem auto"}
     const avatarStyle={backgroundColor: '#1bbd7e'}
     return(
-        <Grid> 
-            <Paper elevation={10} style={paperStyle}>
-                <Grid align='center'> 
-                    <Avatar style={avatarStyle}><LockIcon></LockIcon></Avatar>
-                    <h2>Войти</h2>
-                </Grid>
-                <Grid container direction={"column"} spacing={3}>
-                    <Grid item>
-                        <TextField 
-                            label="  Email" 
-                            placeholder="Введите почту" 
-                            error={emailError}
-                            value={emailInput}
-                            inputProps={{}}
-                            id="standart-basic" 
-                            type="email" 
-                            variant="outlined" 
-                            fullWidth 
-                            required
-                            onBlur={handleEmail}
-                            onChange={(event) => {
-                                setEmailInput(event.target.value);
-                            }} 
-                        />
+        <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="100vh"
+        >
+            <Grid> 
+                <Paper elevation={10} style={paperStyle}>
+                    <Grid align='center'> 
+                        <Avatar style={avatarStyle}><LockIcon></LockIcon></Avatar>
+                        <h2>Войти</h2>
                     </Grid>
-                    <Grid item>
-                        <FormControl fullWidth >
-                            <InputLabel
-                                padding="0"
+                    <Grid container direction={"column"} spacing={3}>
+                        <Grid item>
+                            <TextField 
+                                label="  Email" 
+                                placeholder="Введите почту" 
+                                error={emailError}
+                                value={emailInput}
+                                inputProps={{}}
+                                id="standart-basic" 
+                                type="email" 
+                                variant="outlined" 
+                                fullWidth 
                                 required
-                                error={passwordError}
-                                htmlFor="standard-adornment-password"
-                            >
-                            Пароль
-                            </InputLabel>
-                            <Input
-                                placeholder="Введите пароль" 
-                                error={passwordError}
-                                onBlur={handlePassword}
-                                id="standard-adornment-password"
-                                type={showPassword ? "text" : "password"}
+                                onBlur={handleEmail}
                                 onChange={(event) => {
-                                setPasswordInput(event.target.value);
-                                }}
-                                value={passwordInput}
-                                endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                    >
-                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                                }
+                                    setEmailInput(event.target.value);
+                                }} 
                             />
-                        </FormControl>
-                    </Grid>
-                    <Grid item>
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    name=""
-                                    color="primary"
-                                    {...label}
-                                    size="small"
-                                    onChange={(event) => setRememberMe(event.target.checked)}                              
-                                /> 
-                            }
-                            label="Запомнить"                           
-                        />
-                    </Grid>
-                    <Grid item>
-                        <Button 
-                            type="submit" 
-                            variant="contained" 
-                            fullWidth
-                            startIcon={<LoginIcon />}
-                            onClick={handleSubmit}
-                            >
-                            Войти
-                        </Button>
-                    </Grid>
+                        </Grid>
+                        <Grid item>
+                            <FormControl fullWidth >
+                                <InputLabel
+                                    padding="0"
+                                    required
+                                    error={passwordError}
+                                    htmlFor="standard-adornment-password"
+                                >
+                                Пароль
+                                </InputLabel>
+                                <Input
+                                    placeholder="Введите пароль" 
+                                    error={passwordError}
+                                    onBlur={handlePassword}
+                                    id="standard-adornment-password"
+                                    type={showPassword ? "text" : "password"}
+                                    onChange={(event) => {
+                                    setPasswordInput(event.target.value);
+                                    }}
+                                    value={passwordInput}
+                                    endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        >
+                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                    }
+                                />
+                            </FormControl>
+                        </Grid>
+                        <Grid item>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        name=""
+                                        color="primary"
+                                        {...label}
+                                        size="small"
+                                        onChange={(event) => setRememberMe(event.target.checked)}                              
+                                    /> 
+                                }
+                                label="Запомнить"                           
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Button 
+                                type="submit" 
+                                variant="contained" 
+                                fullWidth
+                                startIcon={<LoginIcon />}
+                                onClick={handleSubmit}
+                                >
+                                Войти
+                            </Button>
+                        </Grid>
 
-                    {/* Show Form Error if any */}
-                    {formValid && (
-                        <Stack  sx={{padding: "1rem" }} spacing={2}>
-                        <Alert severity="error" size="small">
-                            {formValid}
-                        </Alert>
-                        </Stack>
-                    )}
+                        {/* Show Form Error if any */}
+                        {formValid && (
+                            <Stack  sx={{padding: "1rem" }} spacing={2}>
+                            <Alert severity="error" size="small">
+                                {formValid}
+                            </Alert>
+                            </Stack>
+                        )}
 
-                    {/* Show Success if no issues */}
-                    {success && (
-                        <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
-                        <Alert severity="success" size="small">
-                            {success}
-                        </Alert>
-                        </Stack>
-                    )}
-                    <Grid item>
-                        <Typography>
-                            <Link href="#">
-                                Забыли пароль
-                            </Link>
-                        </Typography>
+                        {/* Show Success if no issues */}
+                        {success && (
+                            <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
+                            <Alert severity="success" size="small">
+                                {success}
+                            </Alert>
+                            </Stack>
+                        )}
+                        <Grid item>
+                            <Typography>
+                                <Link href="#">
+                                    Забыли пароль
+                                </Link>
+                            </Typography>
+                        </Grid>
+                                            
+                        <Grid item>
+                            <Typography>Еще не зарегистрированы?
+                                <Link href="/signup">
+                                    Зарегистрироваться
+                                </Link>
+                            </Typography>
+                        </Grid>
                     </Grid>
-                                        
-                    <Grid item>
-                        <Typography>Еще не зарегестрированы?
-                            <Link href="/signup">
-                                Зарегестрироваться
-                            </Link>
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </Paper>
-        </Grid>
+                </Paper>
+            </Grid>
+        </Box>
     )
 }
 
