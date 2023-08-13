@@ -24,7 +24,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { loginUserAction} from "../store/userReducer"
+import { fetchLoginUser } from "../asyncAction/user";
 // Email Validation
 const isEmail = (email) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
@@ -34,9 +34,8 @@ const LoginPage=()=>{
     //Redux
     const dispatch = useDispatch();
     const isAuth = useSelector(state => state.user.isAuth);
-    const userLogin = (userId, jwt) => {
-        console.log({userId, jwt})
-        dispatch(loginUserAction({userId, jwt}));
+    const userLogin = (email, password) => {
+        dispatch(fetchLoginUser({email, password}));
     }
     const navigate = useNavigate();
 
@@ -116,7 +115,7 @@ const LoginPage=()=>{
   
       //Show Successfull Submittion
       setSuccess("Форма введена успешно");
-      userLogin(1, "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU");
+      userLogin(emailInput, passwordInput);
       navigate('/profile');
     };
 

@@ -11,7 +11,8 @@ export default function ProfileComp() {
     // const dispatch = useDispatch();
     const isAuth = useSelector(state => state.user.isAuth);
     const userId = useSelector(state => state.user.userId);
-
+    const token = useSelector(state => state.user.token);
+    console.log("ProfileComp" , {isAuth,userId, token});
     const [showPassword, setShowPassword] = React.useState(false);
 
     const [UserData, setUserData] = React.useState([{
@@ -30,14 +31,14 @@ export default function ProfileComp() {
         const getUserData = async () => {
             if (isAuth) {
                 const response = await fetch(`http://localhost:3001/api/user/${userId}`,{headers:
-                {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU'}});
+                {'Authorization': token}});
                 const  data = await response.json();
-                console.log(data.result);           
+                console.log("data.result", data.result);           
                 setUserData(data.result);
             }
         };
         getUserData();
-    },[])
+    },[isAuth, userId, token])
   console.log(UserData); 
   // console.log(UserData.surname);   
  

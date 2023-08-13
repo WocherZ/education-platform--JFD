@@ -2,7 +2,8 @@ const defaultState = {isAuth: false,
                       userId : 0,
                       userName: null,
                       notification: 0,
-                      jwt: null};
+                      role: null,
+                      token: null};
 
 // action = {type: "", payload: ""};
 
@@ -13,12 +14,16 @@ export function reducer(state=defaultState, action) {
   let isAuth = false;
   switch (action.type) {
     case LOGIN:
+      // console.log("action.payload.", action.payload);
       if (action.payload.userId) {
         isAuth = true;
       }
-      return {...state, isAuth: isAuth, userId: action.payload.userId, jwt: action.payload.jwt};
+      return {...state, isAuth: isAuth, 
+              userId: action.payload.userId,
+              token: action.payload.token,
+              role: action.payload.role};
     case LOGOUT:  
-      return {...state, isAuth: false, userId: 0, jwt: null};
+      return {...state, isAuth: false, userId: 0, token: null, role: null};
     default:
       return state;
   }

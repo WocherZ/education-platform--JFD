@@ -13,7 +13,7 @@ export default function generateAccessToken(userId: number, role: string, res: R
         });
       }
       res.set("Authorization", `Bearer ${token}`);
-      return res.json({message: "Success!", token: `Bearer ${token}`});
+      return res.json({message: "Success!", userId: userId, role: role , token: `Bearer ${token}`});
     }
   );
 }
