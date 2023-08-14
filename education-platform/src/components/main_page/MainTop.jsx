@@ -1,58 +1,148 @@
 import '../../styles/reset.css';
 import '../../styles/common.css';
 import '../../styles/main_page.css';
-import './main_top.css';
-
-import { Typography } from "@mui/material";
+import React from 'react';
+import { Typography, Button } from "@mui/material";
 import Checks from './Checks';
 import Brands from './Brands';
 import Social from './Social_networks';
 import Categories from './Categories';
+import { useNavigate } from 'react-router-dom';
+
+import LineImage from '../../images/main/Line 10.svg';
+import PhotoImage from '../../images/main/photo_top.png';
+
+const styles = {
+  mainTop: {
+    position: 'relative',
+    backgroundColor: '#F7F7F7',
+    padding: '0 5%',
+    fontWeight: '900',
+    zIndex: '1',
+  },
+  mainTopHeader: {
+    fontFamily: 'Nunito',
+    fontWeight: '900',
+    fontSize: '64px',
+    minWidth: '750px',
+    paddingTop: '50px',
+    '@media (max-width: 768px)': {
+        fontSize: '48px', // Adjust font size for smaller screens
+        minWidth: 'auto', // Allow it to adapt naturally
+    },
+  },
+  mainTopHeaderBlue: {
+    color: '#00ABBD',
+  },
+  mainText: {
+    color: '#96989B',
+    fontFamily: 'Poppins',
+    fontSize: '20px',
+    fontWeight: '600',
+    lineHeight: '1.9',
+    paddingTop: '24px',
+  },
+  mainTextLine: {
+    backgroundImage: `url(${LineImage})`,
+    width: '670px',
+    height: '21px',
+  },
+  mainTopImage: {
+    position: 'absolute',
+    backgroundImage: `url(${PhotoImage})`,
+    backgroundPosition: 'center center',
+    width: '40%',
+    minHeight: '60%',
+    flexShrink: '0',
+    top: '220px',
+    right: '140px',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    zIndex: '-1',
+  },
+  mainTopActions: {
+    display: 'flex',
+    justifyContent: 'left',
+    alignItems: 'center',
+   
+    minWidth: '700px',
+  },
+  buttonTop: {
+    listStyleType: 'none',
+    width: '208px',
+    height: '84px',
+    flexShrink: '0',
+    borderRadius: '49px',
+    backgroundColor: '#FE7243',
+    color: '#FFF',
+    fontFamily: 'Poppins',
+    fontSize: '95%',
+    fontWeight: '600',
+    cursor: 'pointer',
+    overflow: 'hidden',
+    '&:hover': {
+      backgroundColor: '#2980b9',
+      color: 'black',
+    },
+    zIndex: '5',
+  },
+  links: {
+    display: 'flex',
+    paddingTop: '10px',
+    paddingBottom: '100px',
+    color: '#96989B',
+    fontFamily: 'Poppins',
+    fontSize: '17px',
+    fontWeight: '600',
+    lineHeight: '193.5%',
+  },
+  linksLink: {
+    paddingLeft: '60px',
+  },
+  mediumBlock: {
+    backgroundColor: '#FFF',
+    minHeight: '282px',
+  },
+};
 
 const Main = () => {
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate('/signup')
+  }
 
-    return (
-    <>
-        <section className='main'>
-            <div className='main_top'>
-                <Checks></Checks>
-                <Brands></Brands>
-        
-                <div className="main_top__wrapper">
-                    <Typography variant="text" className="main_top__header">
-                        Access Your Class From<br></br>
-                    </Typography>
-                    <Typography variant="text" className="main_top__header main_top__header-blue">
-                        Anywhere & Anytime
-                    </Typography>
-                    <div className='main_text'>
-                        A solution for easy and flexible online learning, you can study<br></br> anywhere and at anytime on this platform
-                    </div>
-                    <div className='main_text-line'></div>
-                    <div className='main_top__image'></div>
-                    <div className='main_top__actions'>
-                        <button className='button_top'>Join For Free</button>
-                        <div className='play_icon'><a href='#'></a></div>
-                        <div className='play_text'>Play Now</div>
-                    </div>
-                </div>
-
-                <Social></Social>
-
-                <div className='links'>
-                    <div className='links_link'>Experienced Instructors</div>
-                    <div className='links_link'>Quality Videos</div>
-                    <div className='links_link'>Affordable Prices</div>
-                </div>
-            </div>
-
-            <div className='medium_block'></div>
-
-            <Categories></Categories>
-        </section>
-    </>
-    );
+  return (
+    <section style={styles.main}>
+      <div style={styles.mainTop}>
+        <Checks />
+        <Brands />
+        <div style={styles.mainTopWrapper}>
+          <Typography variant="text" style={styles.mainTopHeader}>
+            Доступ к вашему уроку<br />
+          </Typography>
+          <Typography variant="text" style={{ ...styles.mainTopHeader, ...styles.mainTopHeaderBlue }}>
+            В любом месте и в любое время
+          </Typography>
+          <div style={styles.mainText}>
+            Решение для легкого и гибкого онлайн-обучения, вы можете учиться<br />в любом месте и в любое время на этой платформе.
+          </div>
+          <div style={styles.mainTextLine}></div>
+          <div style={styles.mainTopImage}></div>
+          <div style={styles.mainTopActions}>
+            <Button style={styles.buttonTop} onClick={handleButtonClick}>Присоединиться бесплатно</Button>
+          </div>
+        </div>
+        <Social />
+        <div style={styles.links}>
+          <div style={styles.linksLink}>Опытные инструкторы</div>
+          <div style={styles.linksLink}>Качественные видео</div>
+          <div style={styles.linksLink}>Доступные цены</div>
+        </div>
+      </div>
+      <div style={styles.mediumBlock}></div>
+      <Categories />
+    </section>
+  );
 }
 
 export default Main;
-
