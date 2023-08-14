@@ -174,7 +174,7 @@ export default function AppBar() {
       </MenuItem>
     ))
  
-  console.log("currentPage " + currentPage);
+  // console.log("currentPage " + currentPage);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <MuiAppBar position="static">

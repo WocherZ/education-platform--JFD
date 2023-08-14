@@ -10,7 +10,7 @@ class Controller {
         const result = await course.getById(id);
         res.status(200).json({message: "success", result: result});
       } else {
-        res.status(200).json({message: "Error, id is not integer"});
+        res.status(200).json({message: "Error, id is not integer", result: null});
       }
     } catch (e) {
       next(e);

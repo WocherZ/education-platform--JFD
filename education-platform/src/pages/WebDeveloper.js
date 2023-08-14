@@ -41,7 +41,9 @@ export default function WebDeveloper() {
             if (courseId > 0){
             const data = await fetchCourse(courseId)
             // console.log("getCourse", data.result);
-            setCourse(data.result);
+            if (data.result) {
+                setCourse(data.result);
+            }
             };
         }
             getCourse();
@@ -69,8 +71,11 @@ export default function WebDeveloper() {
     }, [courseId])
 
     return (
+    <div>
+        <AppBar />
+        { course.id > 0    ?
         <div>
-            <AppBar />
+            {/* <AppBar /> */}
             <h1>{course.name}</h1>
             <div id="description">
                 <p>{course.description}</p>
@@ -112,6 +117,12 @@ export default function WebDeveloper() {
                     </List>
                 </Collapse>
             </div>
+            </div>    
+            :
+            <Typography>
+                Такого курса не существует.
+            </Typography>
+        }
         </div>
     )
 }
