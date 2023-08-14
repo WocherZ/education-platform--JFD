@@ -1,5 +1,17 @@
 version: '3'
 services:
+  react:
+    container_name: react
+    build:
+      context: ../education-platform
+    environment:
+      NODE_ENV: prod
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+    restart: always
+
   api:
     container_name: api
     build:

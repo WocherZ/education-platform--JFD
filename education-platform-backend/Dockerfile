@@ -2,12 +2,12 @@ FROM node:18.4-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY *.json ./
 
-RUN npm install --production
+RUN npm install
 
-COPY ./dist ./dist
+COPY . .
 
-COPY ./env ./env
+RUN npm run build
 
 CMD ["npm", "run", "prod"]
