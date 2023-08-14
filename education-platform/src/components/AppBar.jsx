@@ -64,10 +64,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function AppBar( {userName, userAvatar, notification }) {
+export default function AppBar() {
   const dispatch = useDispatch();
   const isAuth = useSelector(state => state.user.isAuth);
-  // console.log(isAuth);
+  const userName = useSelector(state => state.user.name);
+  const notification = useSelector(state => state.user.notification);
+  const userAvatar = null;
+  // console.log("ENV")
+  // console.log(process.env.REACT_APP_API_HOST, process.env.REACT_APP_API_PORT);
   let currentPage = window.location.pathname;
   const navigate = useNavigate();
 

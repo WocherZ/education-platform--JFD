@@ -12,13 +12,16 @@ export default function ProfileComp() {
     const isAuth = useSelector(state => state.user.isAuth);
     const userId = useSelector(state => state.user.userId);
     const token = useSelector(state => state.user.token);
-    const port = 3001;
-    const domain = 'localhost';
+    
+    const domaine = process.env.REACT_APP_API_HOST || "http://localhost";
+    const port = process.env.REACT_APP_API_PORT || 3001;
+    // const port = 3001;
+    // const domain = 'localhost';
   //const isAuth = true;
   //const userId = 1;
   //const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNjg5NDI5NDE0fQ.5iyGE8rVx3kHLC93B0w29h1Ah4lZ1MMA35QAvAFORzU';
 
-    console.log("ProfileComp" , {isAuth,userId, token});
+    // console.log("ProfileComp" , {isAuth,userId, token});
     const [showPassword, setShowPassword] = React.useState(false);
 
     const [UserData, setUserData] = React.useState(
@@ -32,7 +35,7 @@ export default function ProfileComp() {
     
     const handleSubmit = (event) => {
         event.preventDefault();     
-        fetch(`http://${domain}:${port}/api/user/${userId}`,
+        fetch(`${domaine}:${port}/api/user/${userId}`,
         {method: 'PUT',  
       //  mode: 'no-cors', 
         headers:
@@ -55,7 +58,7 @@ export default function ProfileComp() {
     useEffect(() =>{ 
         const getUserData = async () => {
             if (isAuth) {
-                const response = await fetch(`http://${domain}:${port}/api/user/${userId}`,
+                const response = await fetch(`${domaine}:${port}/api/user/${userId}`,
                 {headers:
                 {'Authorization': token}});
                 const  data = await response.json();
@@ -64,11 +67,12 @@ export default function ProfileComp() {
             }
         };
         getUserData();
-    },[isAuth, userId, token])
+    },[isAuth, userId, token, domaine, port])
   console.log(UserData); 
  console.log(UserData.name);
 
     return (
+        isAuth ? 
         <form   onSubmit={handleSubmit}>
         <div>
             <div id="setBack">
@@ -235,6 +239,11 @@ export default function ProfileComp() {
             </div>
         </div>
         </form>
+        : 
+        <Typography>
+            Личный кабинет доступен после входа на сайт. Если у вас нет аккаунта, то сначала пройдите регистрацию.
+        </Typography>
+    
     )
 
 

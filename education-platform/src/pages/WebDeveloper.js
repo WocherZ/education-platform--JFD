@@ -5,8 +5,8 @@ import account from '../images/courses/account.png'
 import React, { useState, useEffect } from 'react';
 // import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchCourse } from "../asyncAction/course";
-import { useNavigate } from 'react-router-dom';
+import { fetchCourse, fetchModules, fetchTeachers } from "../asyncAction/course";
+// import { useNavigate } from 'react-router-dom';
 
 import {
     List,
@@ -50,11 +50,8 @@ export default function WebDeveloper() {
 
     useEffect(() => {
         const getModules = async () => {
-            const response = await fetch(
-                `http://localhost:3001/api/modules/course/${courseId}`, {
-            }
-            );
-            const data = await response.json();
+            const data = await fetchModules( courseId);
+            // const data = await response.json();
             // console.log(data.result);
             setModules(data.result);
         };
@@ -63,16 +60,13 @@ export default function WebDeveloper() {
 
     useEffect(() => {
         const getTeacher = async () => {
-            const response = await fetch(
-                `http://localhost:3001/api/user/course/${courseId}`, {
-            }
-            );
-            const data = await response.json();
+            const data = await fetchTeachers(courseId);
+            // const data = await response.json();
             // console.log(data.result);
             setTeacher(data.result);
         };
         getTeacher();
-    }, [])
+    }, [courseId])
 
     return (
         <div>

@@ -7,12 +7,7 @@ function LearnPage() {
 
   return (
     <>
-    <AppBar
-      isAuth
-      userName="Иван Иванов"
-      userAvatar={avatar}
-      notification={3}
-      />
+    <AppBar/>
       <Typography>
       Дашборд ученика: текущие курсы, дедлайны, активность рейтинг, рекомендуемые курсы и т..
       </Typography>

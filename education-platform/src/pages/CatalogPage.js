@@ -3,8 +3,8 @@ import {Grid, Typography, Paper, Container} from "@mui/material";
 import AppBar from "../components/AppBar";
 import Courses from "../components/Courses";
 
-const domaine = "http://localhost";
-const port = 3002;
+const domaine = process.env.REACT_APP_API_HOST || "http://localhost";
+const port = process.env.REACT_APP_API_PORT || 3001;
 
 function CatalogPage() {
   const [data, setData] = React.useState([]);

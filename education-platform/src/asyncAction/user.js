@@ -1,7 +1,8 @@
 import { loginUserAction } from "../store/userReducer";
 
-const domaine = "http://localhost";
-const port = 3001;
+const domaine = process.env.REACT_APP_API_HOST || "http://localhost";
+const port = process.env.REACT_APP_API_PORT || 3001;
+
 
 export const fetchLoginUser = ({email, password}) => {
   return function(dispatch) {

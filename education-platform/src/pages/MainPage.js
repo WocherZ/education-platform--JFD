@@ -29,14 +29,9 @@ function MainPage() {
 
   return (
     <>
-    <AppBar
-      isAuth={false}
-      userName={null}
-      userAvatar={null}
-      notification={0}
-      />
-      <Main></Main>
-      <Typography variant="h3">
+      <AppBar/>
+      <Main/>
+      {/* <Typography variant="h3">
        HomePage
       </Typography>
       <Typography>
@@ -47,7 +42,7 @@ function MainPage() {
       <Typography variant="h3">
        Все страницы (для отладки)
       </Typography>
-      {menuPages}
+      {menuPages} */}
        
     </>
   );
