@@ -1,6 +1,5 @@
-import './card.css';
-import { Grid, CardContent, Avatar, Typography } from '@mui/material';
-import { DivCourseSection, ContainerCardGrid, StyledCard, StyledCardMedia, TypographyUserName, DivCourseUser, DivCourseRating, ImgRaitingStar } from '.././../styles.js';
+
+import { Card, Grid, Container, CardMedia, CardContent, Avatar, Typography } from '@mui/material';
 
 
 import star from '../../images/main/Star 1.svg';
@@ -10,39 +9,39 @@ const cardData = [
         id: 1,
         image: require('../../images/main/code_image1.png'),
         avatar: require('../../images/main/code_item1.svg').default,
-        userName: 'Diallo Liam',
-        courseTitle: 'Web design and development Crash course 2022',
+        userName: 'Диалло Лим',
+        courseTitle: 'Веб дизайн и разработка. Курс 2023',
         rating: 4.8,
     },
     {
         id: 2,
         image: require('../../images/main/robot_image2.png'),
         avatar: require('../../images/main/code_item2.svg').default,
-        userName: 'Amanda Cerny',
-        courseTitle: 'Machine learning, Data science and Deep Learning',
+        userName: 'Юлия Николаева',
+        courseTitle: 'Машинное обучение, наука о данных и глубокое обучение',
         rating: 4.6,
     },
     {
         id: 3,
         image: require('../../images/main/laptop_image3.png'),
         avatar: require('../../images/main/code_item3.svg').default,
-        userName: 'Sylvester Drolly',
-        courseTitle: 'Python, Data Science and machine learning boothcamp',
+        userName: 'Сильвестр Андреев',
+        courseTitle: 'Python, наука о данных и машинное обучение: интенсивный курс.',
         rating: 4.6,
     },
     {
         id: 4,
         image: require('../../images/main/cartoons_image4.png'),
         avatar: require('../../images/main/code_item4.svg').default,
-        userName: 'Roxanne Andrews',
-        courseTitle: 'UI/UX Design, Product Design',
+        userName: 'Роксанна Андрю',
+        courseTitle: 'Дизайн пользовательского интерфейса (UI/UX), дизайн продуктов.',
         rating: 4.9,
     },
     {
         id: 5,
         image: require('../../images/main/girl_image5.png'),
         avatar: require('../../images/main/code_item5.svg').default,
-        userName: 'Leslie Truly',
+        userName: 'Лесли Трулли',
         courseTitle: 'Adobe Photoshop, Adobe Illustrator',
         rating: 4.5,
     },
@@ -50,46 +49,39 @@ const cardData = [
         id: 6,
         image: require('../../images/main/games_image6.png'),
         avatar: require('../../images/main/code_item6.svg').default,
-        userName: 'David Perry',
-        courseTitle: 'The ultimate guide to Game development with Unity 2022',
+        userName: 'Давин Арутюнян',
+        courseTitle: 'Самое полное руководство по разработке игр с использованием Unity 2023.',
         rating: 4.6,
     }
 ];
 
 const Cards = () => {
-  
-    return (
-      <DivCourseSection>
-        <ContainerCardGrid>
-          <Grid container spacing={3}>
-            {cardData.map((card) => (
-              <Grid item xs={4} key={card.id}>
-                <StyledCard>
-                  <StyledCardMedia image={card.image} title="card_title" />
-                  <CardContent className={card.cardContent}>
-                    <DivCourseUser>
-                      <Avatar alt="Diallo Liam" src={card.avatar} />
-                      <TypographyUserName>{card.userName}</TypographyUserName>
-                    </DivCourseUser>
-                    <Typography>{card.courseTitle}</Typography>
-                    <DivCourseRating>
-                      <div>{card.rating}/5.0</div>
-                      {[1, 2, 3, 4, 5].map((index) => (
-                        <ImgRaitingStar
-                          key={index}
-                          src={star}
-                          alt={`star-${index}`}
-                        />
-                      ))}
-                    </DivCourseRating>
-                  </CardContent>
-                </StyledCard>
-              </Grid>
-            ))}
+  return (
+    <Container>
+      <Grid container spacing={3} sx={{ display: 'flex', flexWrap: 'wrap' }}>
+        {cardData.map((card) => (
+          <Grid item xs={12} sm={6} md={4} key={card.id} sx={{ flexGrow: 1, minWidth: 270 }}>
+            <Card sx={{ maxWidth: 345, display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <CardMedia component="img" height="194" image={card.image} title="card_title" />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Avatar alt={card.userName} src={card.avatar} />
+                  <Typography>{card.userName}</Typography>
+                </div>
+                <Typography>{card.courseTitle}</Typography>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div>{card.rating}/5.0</div>
+                  {[1, 2, 3, 4, 5].map((index) => (
+                    <img key={index} src={star} alt={`star-${index}`} />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </Grid>
-        </ContainerCardGrid>
-      </DivCourseSection>
-    );
-  };
-  
-  export default Cards;
+        ))}
+      </Grid>
+    </Container>
+  );
+};
+
+export default Cards;
